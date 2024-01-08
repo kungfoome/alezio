@@ -1,0 +1,18 @@
+---
+import { getCollection } from "astro:content";
+
+import { articleSchema } from "../schemas/ArticleSchema";
+
+const publishedArticles = await getCollection("articles", ({ data }) => {
+    return data.draft !== true;
+});
+
+// publishedArticles.
+// const tags = [...new Set(publishedArticles.map((article: any) => article.data.tags).flat())];
+
+const tags = articleSchema;
+---
+
+<!-- {tags.map((tag) =>
+    <TagButton tag={tag} />
+) -->

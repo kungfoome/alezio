@@ -1,0 +1,97 @@
+---
+// TypeScript in frontmatter script space in Astro
+type TypewriterProps = {
+    wordsWithColors: { word: string; color: string }[];
+    typingSpeed?: number;
+    deletingSpeed?: number;
+    deleteDelay?: number;
+};
+
+const defaultProps: TypewriterProps = {
+    wordsWithColors: [
+        { word: "Hello", color: "text-red-500" },
+        { word: "World", color: "text-green-500" },
+        { word: "TailwindCSS", color: "text-blue-500" },
+        { word: "Animation", color: "text-yellow-500" },
+    ],
+    typingSpeed: 200,
+    deletingSpeed: 100,
+    deleteDelay: 750,
+};
+
+// Merge default props with passed props
+const mergedProps: TypewriterProps = { ...defaultProps, ...Astro.props };
+const serializedProps = JSON.stringify(mergedProps);
+---
+
+<span id="typewriter-wrapper" class="flex">
+    <span id="typewriter-text" data-props={serializedProps}></span>
+    <span class="animate-blink">|</span>
+</span>
+
+<style>
+    .typewriter-cursor {
+        animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+        50% {
+            opacity: 0;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const typewriterText = document.getElementById("typewriter-text");
+        // @ts-ignore
+        const props = JSON.parse(typewriterText.getAttribute("data-props"));
+
+        let currentWordIndex = 0;
+        let currentCharIndex = 0;
+        let isDeleting = false;
+        let isPauseBeforeDeleting = false;
+
+        function type() {
+            const currentWord = props.wordsWithColors[currentWordIndex].word;
+            const partOfWord = currentWord.slice(0, currentCharIndex);
+
+            // @ts-ignore
+            typewriterText.innerHTML = partOfWord;
+            // @ts-ignore
+            typewriterText.className =
+                props.wordsWithColors[currentWordIndex].color;
+
+            let typingSpeed = props.typingSpeed;
+
+            if (isDeleting) {
+                if (currentCharIndex > 0) {
+                    typingSpeed = props.deletingSpeed;
+                    currentCharIndex--;
+                } else {
+                    isDeleting = false;
+                    currentWordIndex =
+                        (currentWordIndex + 1) % props.wordsWithColors.length;
+                }
+            } else {
+                if (currentCharIndex < currentWord.length) {
+                    currentCharIndex++;
+                } else {
+                    if (!isPauseBeforeDeleting) {
+                        isPauseBeforeDeleting = true;
+                        setTimeout(() => {
+                            isDeleting = true;
+                            isPauseBeforeDeleting = false;
+                            type(); // Call type again to start deleting
+                        }, props.deleteDelay); // Delay of 1 second before deleting
+                        return; // Exit the function to wait
+                    }
+                }
+            }
+
+            setTimeout(type, typingSpeed);
+        }
+
+        type();
+    });
+</script>
