@@ -6,7 +6,7 @@ export const imageSchema = ({ image }: SchemaContext) =>
         alt: z.string(),
     });
 
-export const articleSchema = ({ image }) => z.object({
+export const articleSchema = ({ image }: { image: any }) => z.object({
     title: z.string(),
     author: z.string().optional(),
     description: z.string().optional(),

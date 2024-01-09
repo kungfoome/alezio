@@ -29,23 +29,10 @@ const serializedProps = JSON.stringify(mergedProps);
     <span class="animate-blink">|</span>
 </span>
 
-<style>
-    .typewriter-cursor {
-        animation: blink 1s infinite;
-    }
-
-    @keyframes blink {
-        50% {
-            opacity: 0;
-        }
-    }
-</style>
-
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         const typewriterText = document.getElementById("typewriter-text");
-        // @ts-ignore
-        const props = JSON.parse(typewriterText.getAttribute("data-props"));
+        const props = JSON.parse(typewriterText!.getAttribute("data-props") || '{}');
 
         let currentWordIndex = 0;
         let currentCharIndex = 0;
@@ -56,10 +43,8 @@ const serializedProps = JSON.stringify(mergedProps);
             const currentWord = props.wordsWithColors[currentWordIndex].word;
             const partOfWord = currentWord.slice(0, currentCharIndex);
 
-            // @ts-ignore
-            typewriterText.innerHTML = partOfWord;
-            // @ts-ignore
-            typewriterText.className =
+            typewriterText!.innerHTML = partOfWord;
+            typewriterText!.className =
                 props.wordsWithColors[currentWordIndex].color;
 
             let typingSpeed = props.typingSpeed;

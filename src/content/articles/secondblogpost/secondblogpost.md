@@ -3,7 +3,7 @@ title: Second blog post
 author: Me
 description: "Second blog post to try out images"
 featuredimage:
-    src: "./create_second_blog.png"
+    src: "./featureimage.png"
     alt: "Digital world"
 publishedDate: 2022-07-08
 tags: ["Frontend"]
