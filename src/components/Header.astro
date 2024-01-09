@@ -11,7 +11,7 @@ import logo from "../assets/alezio_logo.svg"
         aria-label="Global"
     >
         <div class="flex lg:flex-1">
-            <a href="/" class="-m-1.5 p-1.5">
+            <a href="/" class="flex">
                 <span class="sr-only">Alez.io Blog</span>
                 <Image
                     src={logo}
@@ -19,7 +19,9 @@ import logo from "../assets/alezio_logo.svg"
                     width="70"
                     height="70"
                 />
+                <span class="flex items-center font-roboto pl-3 text-white text-2md lg:text-xl font-bold">:Alez.io</span>
             </a>
+            
         </div>
         <div class="flex flex-1 justify-end">
             <DarkModeButton />
