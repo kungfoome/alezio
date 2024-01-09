@@ -5,7 +5,7 @@ description: "A blog about using astro to create this blog"
 featuredimage:
     src: "./featureimage.png"
     alt: "How I created my blog"
-publishedDate: 2022-07-08
+publishedDate: 2022-06-01
 tags: ["Frontend"]
 featured: true
 draft: false
