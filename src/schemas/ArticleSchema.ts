@@ -1,6 +1,12 @@
-import { z } from 'astro:content';
+import { z, type SchemaContext } from 'astro:content';
 
-export const articleSchema = z.object({
+export const imageSchema = ({ image }: SchemaContext) =>
+    z.object({
+        src: image(),
+        alt: z.string(),
+    });
+
+export const articleSchema = ({ image }: { image: any }) => z.object({
     title: z.string(),
     author: z.string().optional(),
     description: z.string().optional(),
@@ -9,9 +15,6 @@ export const articleSchema = z.object({
     featured: z.boolean().default(false),
     draft: z.boolean().default(true),
     tags: z.array(z.enum(["SRE", "Frontend", "Platform Engineering"])),
-    featuredimage: z.object({
-        url: z.string(), //TODO: should probably specify a default image
-        alt: z.string().optional(),
-    }).optional(),
-    heroimage: z.string().optional(), //TODO: should probably specify a default image
+    featuredimage: imageSchema({ image }).optional(),
+    heroimage: image().optional(),
 });
