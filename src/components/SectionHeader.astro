@@ -9,19 +9,20 @@ import Typewriter from "./Typewriter.astro";
     />
 </head>
 
-<div class="hidden md:flex bg-gray-900 sm:py-24 lg:px-8">
-    <div class="mx-auto min-w-md">
-        <span
-            class="md:flex font-libre text-white text-4xl lg:text-6xl font-bold"
-            >Tech(<Typewriter
-                wordsWithColors={[
-                    { word: "Platform Engineering", color: "text-purple-500" },
-                    { word: "Frontend", color: "text-pink-500" },
-                    { word: "SRE", color: "text-indigo-500" },
-                ]}
-                typingSpeed={100}
-                deletingSpeed={50}
-            />)</span
-        >
-    </div>
+<div class="hidden md:block bg-gray-900">
+    <section class="mx-auto min-w-md sm:py-16 md:px-40">
+        <span class="md:flex font-libre text-white text-4xl lg:text-6xl font-bold">
+            Brain(
+                <Typewriter
+                    wordsWithColors={[
+                        { word: "Platform Engineering", color: "text-purple-500" },
+                        { word: "Frontend", color: "text-pink-500" },
+                        { word: "SRE", color: "text-indigo-500" },
+                    ]}
+                    typingSpeed={100}
+                    deletingSpeed={50}
+                />
+            )
+        </span>
+    </section>
 </div>

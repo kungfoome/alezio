@@ -1,26 +1,28 @@
 ---
+import { Image } from "astro:assets"
+import DarkModeButton from "./DarkModeButton.astro"
 
+import logo from "../assets/alezio_logo.svg"
 ---
 
 <header class="bg-gray-900">
     <nav
-        class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+        class="mx-auto flex items-center justify-between p-10 lg:px-12"
         aria-label="Global"
     >
         <div class="flex lg:flex-1">
-            <a href="#" class="-m-1.5 p-1.5">
+            <a href="/" class="-m-1.5 p-1.5">
                 <span class="sr-only">Alez.io Blog</span>
-                <img
-                    class="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                    alt=""
+                <Image
+                    src={logo}
+                    alt="Alez.io Blog Homepage"
+                    width="70"
+                    height="70"
                 />
             </a>
         </div>
         <div class="flex flex-1 justify-end">
-            <a href="#" class="text-sm font-semibold leading-6 text-white"
-                >Log in <span aria-hidden="true">&rarr;</span></a
-            >
+            <DarkModeButton />
         </div>
     </nav>
 </header>
