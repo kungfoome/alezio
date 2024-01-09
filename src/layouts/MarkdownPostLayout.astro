@@ -4,9 +4,17 @@ const { frontmatter } = Astro.props;
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
-    <p>{new Date(frontmatter.publishedDate).toLocaleDateString("en-US")}</p>
-    <p><em>{frontmatter.description}</em></p>
-    <p>Written by: {frontmatter.author}</p>
-    <img src={frontmatter.heroimage} width="300" />
-    <slot />
+    <div class="hidden md:block bg-white dark:bg-slate-800 dark:text-gray-300">
+        <section class="mx-auto min-w-md sm:py-16 md:px-48">
+            <span>{frontmatter.title}</span>
+            <span>{frontmatter.description}</span>
+            <span>{new Date(frontmatter.publishedDate).toLocaleDateString("en-US")}</span>
+            
+            <p></p>
+            <p><em>{frontmatter.description}</em></p>
+            <p>Written by: {frontmatter.author}</p>
+            <img src={frontmatter.heroimage} width="300" />
+            <slot />
+        </section>
+    </div>
 </BaseLayout>
