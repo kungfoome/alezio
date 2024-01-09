@@ -1,0 +1,30 @@
+---
+import Typewriter from "./Typewriter.astro";
+---
+
+<head>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;700&display=swap"
+        rel="stylesheet"
+    />
+</head>
+
+<div class="hidden md:block bg-gray-950">
+    <section class="mx-auto min-w-md sm:py-16 md:px-48">
+        <span class="md:flex font-libre text-white text-4xl lg:text-6xl font-bold">
+            Learn(
+                <Typewriter
+                    wordsWithColors={[
+                        { word: "DevOps", color: "text-purple-500" },
+                        { word: "Frontend", color: "text-pink-500" },
+                        { word: "SRE", color: "text-indigo-500" },
+                        { word: "Gaming", color: "text-lime-500" },
+                        { word: "Top Tech", color: "text-amber-500" },
+                    ]}
+                    typingSpeed={100}
+                    deletingSpeed={50}
+                />
+            )
+        </span>
+    </section>
+</div>
