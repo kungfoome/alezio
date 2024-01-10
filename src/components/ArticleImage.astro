@@ -39,6 +39,7 @@ const desktopImage = await getImage({
 });
 
 ---
+
 <picture>
     <source media="(max-width: 768px)" srcset={mobileImage.src} />
     <source media="(min-width: 769px)" srcset={desktopImage.src} />
