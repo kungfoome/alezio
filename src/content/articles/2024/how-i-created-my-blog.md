@@ -1,7 +1,7 @@
 ---
 title: Building and Deploying a Website with Astro, Tailwind, and Cloudflare Pages
 author: Me
-description: "In this blog post, I'll walk you through the process of creating a website using Astro, styling it with Tailwind CSS, and deploying it on Cloudflare Pages. This combination offers a fast, modern, and efficient way to build and deploy web applications."
+description: "In this blog post, I'll walk you through the process of creating a blog using Astro, styling it with Tailwind CSS, and deploying it on Cloudflare Pages. This combination offers a fast, modern, and efficient way to build and deploy web applications."
 featuredimage:
     src: "../../../assets/how-i-created-my-blog/feature.png"
     alt: "Building and Deploying a Website with Astro, Tailwind CSS, and Cloudflare Pages"
