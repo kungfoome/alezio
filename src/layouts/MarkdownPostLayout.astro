@@ -15,8 +15,10 @@ const { article } = Astro.props;
         <ArticleHeader article={article}/>
         <div class="py-8 sm:py-16">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                <span>Published Date: {new Date(article.data.publishedDate).toLocaleDateString("en-US")}</span>
-                <slot />
+                <span>Published: {new Date(article.data.publishedDate).toLocaleDateString("en-US")}</span>
+                <div class="mt-10">
+                    <slot />
+                </div>
             </div>
         </div>
     </BaseLayout>
