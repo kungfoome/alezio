@@ -1,0 +1,35 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Blur, ImageSize } from "../schemas/ArticleSchema";
+
+import ArticleImage from "./ArticleImage.astro";
+
+import heroImg from "../assets/article_hero_default.png";
+
+interface Props {
+    article: CollectionEntry<"articles">;
+}
+
+const { article } = Astro.props;
+---
+
+<div class="relative isolate overflow-hidden bg-gray-900 px-6 py-24 sm:py-32 lg:px-8">
+    <ArticleImage
+        src={article.data.heroimage?.src || heroImg}
+        alt={article.data.heroimage?.alt || ""}
+        blur={article.data.heroimage?.blur || Blur.SM}
+        imageSizeMobile={article.data.heroimage?.imageSizeMobile || ImageSize.SM}
+        imageSizeDesktop={article.data.heroimage?.imageSizeDesktop || ImageSize.MD}
+        ratio={article.data.heroimage?.ratio || 1}
+    />
+
+    <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+            {article.data.title}
+        </h2>
+        <p class="mt-6 text-lg leading-8 text-gray-300">
+            {article.data.description}
+        </p>
+    </div>
+
+</div>

@@ -1,0 +1,47 @@
+---
+import type { ImageMetadata } from "astro";
+import { getImage } from "astro:assets";
+
+import { Blur, ImageSize } from "../schemas/ArticleSchema";
+
+interface Props {
+    src: string | ImageMetadata;
+    alt: string;
+    blur?: Blur;
+    imageSizeMobile?: ImageSize;
+    imageSizeDesktop?: ImageSize;
+    ratio?: number;
+}
+
+const defaultProps = {
+    blur: Blur.SM,
+    imageSizeMobile: ImageSize.XS,
+    imageSizeDesktop: ImageSize.MD,
+    ratio: 1, //square. Setting this higher makes it portrait, setting lower makes it landscape
+}
+
+const { src, alt, blur, imageSizeMobile, imageSizeDesktop, ratio } = { ...defaultProps, ...Astro.props };
+
+var size = 100;
+
+const mobileImage = await getImage({
+    src: src,
+    format: "webp",
+    width: size * imageSizeMobile,
+    height: size * imageSizeMobile * ratio,
+});
+
+const desktopImage = await getImage({
+    src: src,
+    format: "webp",
+    width: size * imageSizeDesktop * 2,
+    height: size * imageSizeDesktop * ratio * 2,
+});
+
+---
+<picture>
+    <source media="(max-width: 768px)" srcset={mobileImage.src} />
+    <source media="(min-width: 769px)" srcset={desktopImage.src} />
+    <img src={desktopImage.src} alt={alt} class=`absolute inset-0 -z-10 h-full w-full object-cover blur-${blur}` />
+</picture>
+

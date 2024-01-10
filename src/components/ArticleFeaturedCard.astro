@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import ArticleFeaturedImage from "./ArticleFeaturedImage.astro"
+import ArticleImage from "./ArticleImage.astro"
+import { Blur } from "../schemas/ArticleSchema";
 
 interface Props {
     article: CollectionEntry<"articles">;
@@ -12,9 +13,10 @@ const { article } = Astro.props;
 <article
     class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80"
 >
-    <ArticleFeaturedImage
+    <ArticleImage
         src={article.data.featuredimage!.src}
         alt={article.data.featuredimage!.alt}
+        blur={Blur.None}
     />
     <div
         class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40 dark:from-gray-800 dark:via-gray-800/20"

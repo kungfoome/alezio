@@ -1,20 +1,23 @@
 ---
-import BaseLayout from "./BaseLayout.astro";
-const { frontmatter } = Astro.props;
----
+import type { CollectionEntry } from "astro:content";
 
-<BaseLayout pageTitle={frontmatter.title}>
-    <div class="hidden md:block bg-white dark:bg-slate-800 dark:text-gray-300">
-        <section class="mx-auto min-w-md sm:py-16 md:px-48">
-            <span>{frontmatter.title}</span>
-            <span>{frontmatter.description}</span>
-            <span>{new Date(frontmatter.publishedDate).toLocaleDateString("en-US")}</span>
-            
-            <p></p>
-            <p><em>{frontmatter.description}</em></p>
-            <p>Written by: {frontmatter.author}</p>
-            <img src={frontmatter.heroimage} width="300" />
-            <slot />
-        </section>
-    </div>
-</BaseLayout>
+import BaseLayout from "./BaseLayout.astro";
+import ArticleHeader from "../components/ArticleHeader.astro";
+
+interface Props {
+    article: CollectionEntry<"articles">;
+}
+
+const { article } = Astro.props;
+---
+<div class="min-h-screen bg-white dark:bg-gray-900 dark:text-gray-300">
+    <BaseLayout pageTitle={article.data.title}>
+        <ArticleHeader article={article}/>
+        <div class="py-8 sm:py-16">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <span>Published Date: {new Date(article.data.publishedDate).toLocaleDateString("en-US")}</span>
+                <slot />
+            </div>
+        </div>
+    </BaseLayout>
+</div>
