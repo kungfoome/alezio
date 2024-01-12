@@ -1,0 +1,14 @@
+.prose ul.contains-task-list li {
+    list-style-type: none;
+    margin: 0;
+}
+
+.prose ul.contains-task-list li.task-list-item {
+    list-style: none;
+}
+
+.prose ul.contains-task-list li.task-list-item input[type="checkbox"] {
+    margin: 0;
+    width: 15px;
+    height: 15px;
+}

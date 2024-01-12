@@ -1,5 +1,9 @@
 ---
+
+import '../styles/articles.css';
+
 ---
+
 <div
     class="prose
         dark:prose-invert
@@ -9,6 +13,7 @@
         prose-a:text-blue-600
         prose-p:text-justify
         prose-img:rounded-xl
+        prose-[class~='contains-task-list']:list-style-type:none
         max-w-7xl"
     >
     <slot />
