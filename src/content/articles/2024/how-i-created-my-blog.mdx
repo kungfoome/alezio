@@ -1,7 +1,7 @@
 ---
 title: Building and Deploying a Website with Astro, Tailwind, and Cloudflare Pages
 author: Me
-description: "Join me as I guide you through the journey of building a sleek, modern blog using Astro, styling it with Tailwind CSS, and deploying it effortlessly with Cloudflare Pages."
+description: 'Join me as I guide you through the journey of building a sleek, modern blog using Astro, styling it with Tailwind CSS, and deploying it effortlessly with Cloudflare Pages.'
 featuredimage:
     src: '../../../assets/how-i-created-my-blog/feature.png'
     alt: 'Building and Deploying a Website with Astro, Tailwind CSS, and Cloudflare Pages'
@@ -12,6 +12,9 @@ draft: false
 heroimage:
     src: '../../../assets/how-i-created-my-blog/hero.png'
     alt: 'Building and Deploying a Website with Astro, Tailwind CSS, and Cloudflare Pages'
+git:
+    repo: 'https://github.com/kungfoome/astro-blog-tutorial'
+    branch: 'baseline'
 ---
 
 import ArticleCTA from '../../../components/ArticleCTA.astro';
@@ -471,10 +474,13 @@ Files we need to create:
 
 -   We created a dummy markdown file with the required metadata.
 
-     <ArticleCTA>Go ahead and try to create a markdown file where you are missing a required field. Return to the debug page and see what error you get.</ArticleCTA>
+    {' '}
+    <ArticleCTA>
+        Go ahead and try to create a markdown file where you are missing a
+        required field. Return to the debug page and see what error you get.
+    </ArticleCTA>
 
     You can now see that the schema is working to validate front matter data and that we can use Astro's API to return a collection. You can sort of see how this can be used as a database in a way.
-
 
 -   We created a Debug page. This page can be called anything you would like to call it. We are just using this page to make sure we can call the `getCollection` API. We will be using this same code to create pages for all of our Markdown files and properly render them.
 
@@ -607,9 +613,17 @@ Files we need to create:
     - Remember that the `pages/` folder is a special folder that defines a route. In this case the `post` folder creates a route to `/post/[slug]`. Where slug is the slug name of the post. The slug name is the name of the file that has been converted to remove special characters and spaces. For our example, this would be `firstpost` and the complete path would be `mysite.com/post/firstpost`.
 
     - The `[..slug]` name is a special name for Astro. There are many ways to create routes in Astro and you should read the documentation to further explore what those options are and how you want to do it. By using slug, we are generating a path based on the `src/contents/` structure.
-    
-        <ArticleCTA>You can try this out by creating a new folder **src/contents/posts/2024/** and then copying and moving the **firstpost.md** file into the **2024/** folder. Make sure you update the relative image location to **../../../assets/firstpost/firstpostimage.png**. Browse to **http://localhost:4321/postscollection** and look at the **slug** field</ArticleCTA>
-        
+
+        {' '}
+        <ArticleCTA>
+            You can try this out by creating a new folder
+            **src/contents/posts/2024/** and then copying and moving the
+            **firstpost.md** file into the **2024/** folder. Make sure you
+            update the relative image location to
+            **../../../assets/firstpost/firstpostimage.png**. Browse to
+            **http://localhost:4321/postscollection** and look at the **slug**
+            field
+        </ArticleCTA>
         The URL now turns into `mysite.com/post/2024/firstpost`.
 
     - Speaking of the debug component. Remember how we queried all the posts within the collection. We do that here as well. The only difference is that we need to tell Astro how to create the routes by using the `getStaticPaths` function. This is how we are able to browse to the individual posts.
@@ -622,8 +636,14 @@ At this point, we can now create as many markdown files as we want and place the
 
 ## Create A Page With A List Of Posts
 
-<ArticleCTA>***Before continuing***, see if you can create a new page to list and link to the posts. You know how to get a collection of posts in the **postscollection.astro** page. You know how to style a page using the **BaseLayout**. You know how to create new pages under the **src/pages/** folder. Link to the posts using this href format: **{`/post/\${post.slug}`}**.</ArticleCTA>
-
+<ArticleCTA>
+    ***Before continuing***, see if you can create a new page to list and link
+    to the posts. You know how to get a collection of posts in the
+    **postscollection.astro** page. You know how to style a page using the
+    **BaseLayout**. You know how to create new pages under the **src/pages/**
+    folder. Link to the posts using this href format: **{`/post/\${post.slug}`}
+    **.
+</ArticleCTA>
 
 ```plaintext
 /

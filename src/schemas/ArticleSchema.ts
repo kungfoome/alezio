@@ -61,5 +61,11 @@ export const articleSchema = ({ image }: { image: any }) =>
         draft: z.boolean().default(true),
         tags: z.array(z.enum(['SRE', 'Frontend', 'Platform Engineering'])),
         featuredimage: imageSchema({ image }).optional(),
-        heroimage: imageSchema({ image }).optional()
+        heroimage: imageSchema({ image }).optional(),
+        git: z
+            .object({
+                repo: z.string(),
+                branch: z.string().optional()
+            })
+            .optional()
     });

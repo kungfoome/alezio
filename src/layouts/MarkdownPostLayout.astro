@@ -9,6 +9,10 @@ interface Props {
 }
 
 const { article } = Astro.props;
+
+const branch = article.data.git?.branch
+    ? `tree/${article.data.git?.branch}`
+    : '';
 ---
 
 <div class="min-h-screen bg-white dark:bg-gray-900 dark:text-gray-300">
@@ -26,6 +30,22 @@ const { article } = Astro.props;
                 <p class="my-6 text-lg leading-8">
                     {article.data.description}
                 </p>
+                {
+                    article.data.git?.repo && (
+                        <>
+                            <p>
+                                <a href={`${article.data.git.repo}/${branch}`}>
+                                    <span class="font-bold">Github Repo:</span>{' '}
+                                    {article.data.git.repo}
+                                </a>
+                            </p>
+                            <p>
+                                <span class="font-bold">Github Branch:</span>{' '}
+                                {article.data.git?.branch}
+                            </p>
+                        </>
+                    )
+                }
                 <div class="mt-10">
                     <slot />
                 </div>
