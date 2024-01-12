@@ -1,5 +1,5 @@
 ---
-import Typewriter from "./Typewriter.astro";
+import Typewriter from './Typewriter.astro';
 ---
 
 <head>
@@ -9,21 +9,23 @@ import Typewriter from "./Typewriter.astro";
     />
 </head>
 
-<div class="hidden md:block bg-gray-950">
+<div class="hidden bg-gray-950 md:block">
     <section class="mx-auto min-w-md sm:py-16 md:px-48">
-        <span class="md:flex font-libre text-white text-4xl lg:text-6xl font-bold">
+        <span
+            class="font-libre text-4xl font-bold text-white md:flex lg:text-6xl"
+        >
             Learn(
-                <Typewriter
-                    wordsWithColors={[
-                        { word: "DevOps", color: "text-purple-500" },
-                        { word: "Frontend", color: "text-pink-500" },
-                        { word: "SRE", color: "text-indigo-500" },
-                        { word: "Gaming", color: "text-lime-500" },
-                        { word: "Top Tech", color: "text-amber-500" },
-                    ]}
-                    typingSpeed={100}
-                    deletingSpeed={50}
-                />
+            <Typewriter
+                wordsWithColors={[
+                    { word: 'DevOps', color: 'text-purple-500' },
+                    { word: 'Frontend', color: 'text-pink-500' },
+                    { word: 'SRE', color: 'text-indigo-500' },
+                    { word: 'Gaming', color: 'text-lime-500' },
+                    { word: 'Top Tech', color: 'text-amber-500' }
+                ]}
+                typingSpeed={100}
+                deletingSpeed={50}
+            />
             )
         </span>
     </section>

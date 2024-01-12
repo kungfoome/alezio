@@ -1,21 +1,28 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import type { CollectionEntry } from 'astro:content';
 
-import BaseLayout from "./BaseLayout.astro";
-import ArticleHeader from "../components/ArticleHeader.astro";
+import BaseLayout from './BaseLayout.astro';
+import ArticleHeader from '../components/ArticleHeader.astro';
 
 interface Props {
-    article: CollectionEntry<"articles">;
+    article: CollectionEntry<'articles'>;
 }
 
-const { article  } = Astro.props;
+const { article } = Astro.props;
 ---
+
 <div class="min-h-screen bg-white dark:bg-gray-900 dark:text-gray-300">
     <BaseLayout pageTitle={article.data.title}>
-        <ArticleHeader article={article}/>
+        <ArticleHeader article={article} />
         <div class="py-8 sm:py-16">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                <span>Published: {new Date(article.data.publishedDate).toLocaleDateString("en-US")}</span>
+                <span
+                    >Published: {
+                        new Date(article.data.publishedDate).toLocaleDateString(
+                            'en-US'
+                        )
+                    }</span
+                >
                 <p class="my-6 text-lg leading-8">
                     {article.data.description}
                 </p>

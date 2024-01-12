@@ -4,24 +4,22 @@ export default {
     theme: {
         extend: {
             animation: {
-                'blink': 'blink 1s infinite',
+                blink: 'blink 1s infinite'
             },
             keyframes: {
                 blink: {
                     '0%, 100%': { opacity: 1 },
-                    '50%': { opacity: 0 },
-                },
+                    '50%': { opacity: 0 }
+                }
             },
             fontFamily: {
-                'libre': ['"Libre Franklin"', 'sans-serif'],
+                libre: ['"Libre Franklin"', 'sans-serif']
             },
             minWidth: {
-                'md': '768px', // This aligns with Tailwind's 'md' breakpoint
+                md: '768px' // This aligns with Tailwind's 'md' breakpoint
             }
-        },
+        }
     },
-    plugins: [
-        require('@tailwindcss/typography'),
-    ],
-    darkMode: 'class',
-}
+    plugins: [require('@tailwindcss/typography')],
+    darkMode: 'class'
+};

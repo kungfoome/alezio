@@ -3,9 +3,9 @@ import { articleSchema } from '../schemas/ArticleSchema';
 
 const articleCollection = defineCollection({
     type: 'content',
-    schema: articleSchema,
+    schema: articleSchema
 });
 
 export const collections = {
-    'articles': articleCollection,
+    articles: articleCollection
 };

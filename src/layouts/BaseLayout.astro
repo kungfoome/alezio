@@ -1,6 +1,6 @@
 ---
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 
 const { pageTitle } = Astro.props;
 ---
@@ -14,15 +14,15 @@ const { pageTitle } = Astro.props;
         <title>{pageTitle}</title>
         <script>
             if (
-              localStorage.getItem('color-theme') === 'dark' ||
-              (!('color-theme' in localStorage) &&
-                window.matchMedia('(prefers-color-scheme: dark)').matches)
+                localStorage.getItem('color-theme') === 'dark' ||
+                (!('color-theme' in localStorage) &&
+                    window.matchMedia('(prefers-color-scheme: dark)').matches)
             ) {
-              document.documentElement.classList.add('dark');
+                document.documentElement.classList.add('dark');
             } else {
-              document.documentElement.classList.remove('dark');
+                document.documentElement.classList.remove('dark');
             }
-          </script>
+        </script>
     </head>
     <body>
         <Header />

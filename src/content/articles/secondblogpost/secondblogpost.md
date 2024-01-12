@@ -1,12 +1,12 @@
 ---
 title: Second blog post
 author: Me
-description: "Second blog post to try out images"
+description: 'Second blog post to try out images'
 featuredimage:
-    src: "./featureimage.png"
-    alt: "Digital world"
+    src: './featureimage.png'
+    alt: 'Digital world'
 publishedDate: 2022-07-08
-tags: ["Frontend"]
+tags: ['Frontend']
 featured: true
 draft: false
 ---

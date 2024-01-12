@@ -1,25 +1,29 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import { Blur, ImageSize } from "../schemas/ArticleSchema";
+import type { CollectionEntry } from 'astro:content';
+import { Blur, ImageSize } from '../schemas/ArticleSchema';
 
-import ArticleImage from "./ArticleImage.astro";
+import ArticleImage from './ArticleImage.astro';
 
-import heroImg from "../assets/article_hero_default.png";
+import heroImg from '../assets/article_hero_default.png';
 
 interface Props {
-    article: CollectionEntry<"articles">;
+    article: CollectionEntry<'articles'>;
 }
 
 const { article } = Astro.props;
 ---
 
-<div class="relative isolate overflow-hidden bg-gray-900 px-6 py-12 sm:py-16 lg:px-8">
+<div
+    class="relative isolate overflow-hidden bg-gray-900 px-6 py-12 sm:py-16 lg:px-8"
+>
     <ArticleImage
         src={article.data.heroimage?.src || heroImg}
-        alt={article.data.heroimage?.alt || ""}
+        alt={article.data.heroimage?.alt || ''}
         blur={article.data.heroimage?.blur || Blur.SM}
-        imageSizeMobile={article.data.heroimage?.imageSizeMobile || ImageSize.SM}
-        imageSizeDesktop={article.data.heroimage?.imageSizeDesktop || ImageSize.MD}
+        imageSizeMobile={article.data.heroimage?.imageSizeMobile ||
+            ImageSize.SM}
+        imageSizeDesktop={article.data.heroimage?.imageSizeDesktop ||
+            ImageSize.MD}
         ratio={article.data.heroimage?.ratio || 1}
     />
 
@@ -28,5 +32,4 @@ const { article } = Astro.props;
             {article.data.title}
         </h2>
     </div>
-
 </div>

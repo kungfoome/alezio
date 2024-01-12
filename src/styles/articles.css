@@ -7,7 +7,7 @@
     list-style: none;
 }
 
-.prose ul.contains-task-list li.task-list-item input[type="checkbox"] {
+.prose ul.contains-task-list li.task-list-item input[type='checkbox'] {
     margin: 0;
     width: 15px;
     height: 15px;

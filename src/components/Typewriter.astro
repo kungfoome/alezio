@@ -9,14 +9,14 @@ type TypewriterProps = {
 
 const defaultProps: TypewriterProps = {
     wordsWithColors: [
-        { word: "Hello", color: "text-red-500" },
-        { word: "World", color: "text-green-500" },
-        { word: "TailwindCSS", color: "text-blue-500" },
-        { word: "Animation", color: "text-yellow-500" },
+        { word: 'Hello', color: 'text-red-500' },
+        { word: 'World', color: 'text-green-500' },
+        { word: 'TailwindCSS', color: 'text-blue-500' },
+        { word: 'Animation', color: 'text-yellow-500' }
     ],
     typingSpeed: 200,
     deletingSpeed: 100,
-    deleteDelay: 750,
+    deleteDelay: 750
 };
 
 // Merge default props with passed props
@@ -30,9 +30,11 @@ const serializedProps = JSON.stringify(mergedProps);
 </span>
 
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const typewriterText = document.getElementById("typewriter-text");
-        const props = JSON.parse(typewriterText!.getAttribute("data-props") || '{}');
+    document.addEventListener('DOMContentLoaded', () => {
+        const typewriterText = document.getElementById('typewriter-text');
+        const props = JSON.parse(
+            typewriterText!.getAttribute('data-props') || '{}'
+        );
 
         let currentWordIndex = 0;
         let currentCharIndex = 0;

@@ -3,20 +3,24 @@ title: Building and Deploying a Website with Astro, Tailwind, and Cloudflare Pag
 author: Me
 description: "In this blog post, I'll walk you through the process of creating a blog using Astro, styling it with Tailwind CSS, and deploying it on Cloudflare Pages. This article details a little bit on how to create a website, but also some of my design decisions"
 featuredimage:
-    src: "../../../assets/how-i-created-my-blog/feature.png"
-    alt: "Building and Deploying a Website with Astro, Tailwind CSS, and Cloudflare Pages"
+    src: '../../../assets/how-i-created-my-blog/feature.png'
+    alt: 'Building and Deploying a Website with Astro, Tailwind CSS, and Cloudflare Pages'
 publishedDate: 2022-06-01
-tags: ["Frontend"]
+tags: ['Frontend']
 featured: true
 draft: false
 heroimage:
-    src: "../../../assets/how-i-created-my-blog/hero.png"
-    alt: "Building and Deploying a Website with Astro, Tailwind CSS, and Cloudflare Pages"
+    src: '../../../assets/how-i-created-my-blog/hero.png'
+    alt: 'Building and Deploying a Website with Astro, Tailwind CSS, and Cloudflare Pages'
 ---
+
+import ArticleCTA from '../../../components/ArticleCTA.astro';
+
+<ArticleCTA>Test </ArticleCTA>
 
 # Introduction
 
-I wanted to write an article to explain how I created my blog site, which is still a work in progress. When I created my blog site, I started from an empty canvas and just started to add what I needed, when I needed. Astro has a nice [tutorial](https://docs.astro.build/en/tutorial/0-introduction/) on how create a blog yourself. I want to add some additional thoughts and extend that tutorial to include some more advanced features that would be helpful.
+In this article, I want to explain the process of how I created my blog site, which is still a work in progress. When I created my blog site, I started from an empty canvas and just started to add what I needed, when I needed. Astro has a nice [tutorial](https://docs.astro.build/en/tutorial/0-introduction/) on how create a blog yourself. I want to add some additional thoughts and extend that tutorial to include some more advanced features that would be helpful.
 
 This article will cover how to get started with Astro and will somewhat walk you through that process step-by-step. This is the first article in a series of tutorials and this will lay out the foundation for us to build other features on top of this one.
 
@@ -24,40 +28,40 @@ This article will use Astro as a framework and tailwind for styling. The goal of
 
 Features:
 
-- Basic Layout (Header, Main Section)
-- Blog List Section
-- Articles written in Markdown
-- Metadata in Markdown
-- Markdown to HTML styling
-- Minimal javascript
-- Minimal design
-- Fast
-- Accessible
-- Reactive for Mobile and Desktop
-- High LCP score
-- No Database
+-   Basic Layout (Header, Main Section)
+-   Blog List Section
+-   Articles written in Markdown
+-   Metadata in Markdown
+-   Markdown to HTML styling
+-   Minimal javascript
+-   Minimal design
+-   Fast
+-   Accessible
+-   Reactive for Mobile and Desktop
+-   High LCP score
+-   No Database
 
 # Prerequisites
 
-You should know HTML and CSS. You should know some of the terminology and the landscape of modern web frameworks like React. You should know how tailwind sort of works and understand what the styling means. 
+You should be familiar with HTML and CSS, as well as some terminology and the landscape of modern web frameworks like React. You should know how Tailwind works and understand what the styling means.
 
 For this reason, this article is for someone that is in between a Beginner and Intermediate level for web development.
 
 # Tools and Technologies
 
-With the current state of web development, there are other tools you need to use that you may not know about. I will explicity list every tool or library that we will work with as we develop this site. You may not need to manually install every tool that is listed as they are built into Astro already, so only install the packages when noted in the tutorial. More information about each tool and why we need them will be given throughout this article series.
+With the current state of web development, there are other tools you need to use that you may not know about. I will explicitly list every tool or library that we will work with as we develop this site. You may not need to manually install every tool that is listed as they are built into Astro already, so only install the packages when noted in the tutorial. More information about each tool and why we need them will be given throughout this article series.
 
-- \[Web Framework\] [Astro](https://astro.build) - Astro is the web framework that we will use to create our application and to make our development process faster.
-- \[Build Tool\] [Vite](https://vitejs.dev) - Under the hood Astro uses vite to help bundle and setup development environments.
-- \[Runtime Environment\] [Nodejs](https://nodejs.org) - Nodejs is used to run javascript server-side, think of this like a php runtime.You can type `node` within your terminal and bring up a REPL to run actual javascript code.
-- \[Package Manager\] [pnpm](https://pnpm.io) - pnpm is a Javascript package manager. There are lots of them like npm (bundled with nodejs), bun, yarn, and more.
-- \[Styling\] [Tailwind](https://tailwindcss.com) - CSS Framework to help develop CSS styling faster.
-- \[Styling\] [Tailwind Typography](https://tailwindcss.com/docs/typography-plugin) - Tailwind plugin to style HTML in which we don't have control over.
-- \[Linter\] [Astro VSCode Plugin](https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode) - This plugin has other useful features, so if you are using VSCode, I would recommend installing this.
-- \[Library\] [Zod](https://zod.dev) - TypeScript schema validator. This is useful to specify parameters and do validation on them to detect errors faster.
-- \[Library\] [Sharp](https://sharp.pixelplumbing.com) - This is used to manipulate images at build time and create static resources. This is supposed to be built into Astro.
-- \[Library\] [Remark](https://remark.js.org) - This is a built-in Astro library to process and compile markdown to HTML.
-- \[Library\] [Shiki](https://shiki.matsu.io) - This is a built-in Astro library to do Syntax highlighting in HTML.
+-   \[Web Framework\] [Astro](https://astro.build) - Astro is the web framework that we will use to create our application and to make our development process faster.
+-   \[Build Tool\] [Vite](https://vitejs.dev) - Under the hood Astro uses vite to help bundle and setup development environments.
+-   \[Runtime Environment\] [Nodejs](https://nodejs.org) - Nodejs is used to run javascript server-side, think of this like a php runtime.You can type `node` within your terminal and bring up a REPL to run actual javascript code.
+-   \[Package Manager\] [pnpm](https://pnpm.io) - pnpm is a Javascript package manager. There are lots of them like npm (bundled with nodejs), bun, yarn, and more.
+-   \[Styling\] [Tailwind](https://tailwindcss.com) - CSS Framework to help develop CSS styling faster.
+-   \[Styling\] [Tailwind Typography](https://tailwindcss.com/docs/typography-plugin) - Tailwind plugin to style HTML in which we don't have control over.
+-   \[Linter\] [Astro VSCode Plugin](https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode) - This plugin has other useful features, so if you are using VSCode, I would recommend installing this.
+-   \[Library\] [Zod](https://zod.dev) - TypeScript schema validator. This is useful to specify parameters and do validation on them to detect errors faster.
+-   \[Library\] [Sharp](https://sharp.pixelplumbing.com) - This is used to manipulate images at build time and create static resources. This is supposed to be built into Astro.
+-   \[Library\] [Remark](https://remark.js.org) - This is a built-in Astro library to process and compile markdown to HTML.
+-   \[Library\] [Shiki](https://shiki.matsu.io) - This is a built-in Astro library to do Syntax highlighting in HTML.
 
 # Step-by-Step Guide
 
@@ -78,7 +82,7 @@ pnpm create astro@latest
 1. Typescript config: Strict
 1. Initialize a new git: Yes
 
-This command creates a new directory with a basic Astro project structure. 
+This command will create a new directory with a basic Astro project structure.
 
 ### Verify Initial Setup
 
@@ -108,17 +112,16 @@ These are the files that should have been generated for you if you are using the
 └── tsconfig.json
 ```
 
-- **public \[Folder\]**: This folder is used for static assets, but most of the time you will probably want to place them in the `src` folder instead.
-- **src \[Folder\]**: This folder is where you put all of your code. You will mostly be adding and modifying files within this directory.
-- **pages \[Folder\]**: This is a special folder used by Astro to create routes. The files in this folder are responsible for handling routing, data loading, and overall page layout for every page in your website.
-- **node_modules \[Folder\]**: This folder holds the third party modules you downloaded using `pnpm` or any other Javascript package manager. You shouldn't have to modify anything in this folder. You also don't want to check this into source control as it can grow to GBs in size.
-- **index.astro \[File\]**: This is a route to index.html as it falls directly under `pages` folder. This is the file that is currently Rendering the Astro text. We will be modifying this over time to make it more dynamic.
-- **env.d.ts \[File\]**: This file references some Astro types so that we can use them and so that Typescript knows about them. You shouldn't have to change anything in the `env.d.ts` file.
-- **.gitignore \[File\]**: This file will ignore any files when you start to commit files using git. Astro will generate a decent default ignore file. You you need to additional files to ignore as your project grows.
-- **package.json \[File\]**: This file is used to define scripts that you run, like `pnpm dev` and setup dependencies. You may do some slight modifications manually, but you can also use a package manager like `pnpm` to add additional dependencies.
-- **pnpm-lock.yaml \[File\]**: This file is generated by `pnpm` and should not be modified directly. This will create a package lock, so that you will always download the correct versions of the packages that you used and only update the packages when you tell `pnpm` to update those packages. This helps if there are any breaking changes in the packages you are using.
-- **tsconfig.json \[File\]**: This file is used to configure settings for Typescript. As you start to use other tools ontop of Astro, you will see more and more configs for each tool you use.
-
+-   **public \[Folder\]**: This folder is used for static assets, but most of the time you will probably want to place them in the `src` folder instead.
+-   **src \[Folder\]**: This folder is where you put all of your code. You will mostly be adding and modifying files within this directory.
+-   **pages \[Folder\]**: This is a special folder used by Astro to create routes. The files in this folder are responsible for handling routing, data loading, and overall page layout for every page in your website.
+-   **node_modules \[Folder\]**: This folder holds the third party modules you downloaded using `pnpm` or any other Javascript package manager. You shouldn't have to modify anything in this folder. You also don't want to check this into source control as it can grow to GBs in size.
+-   **index.astro \[File\]**: This is a route to index.html as it falls directly under `pages` folder. This is the file that is currently Rendering the Astro text. We will be modifying this over time to make it more dynamic.
+-   **env.d.ts \[File\]**: This file references some Astro types so that we can use them and so that Typescript knows about them. You shouldn't have to change anything in the `env.d.ts` file.
+-   **.gitignore \[File\]**: This file will ignore any files when you start to commit files using git. Astro will generate a decent default ignore file. You you need to additional files to ignore as your project grows.
+-   **package.json \[File\]**: This file is used to define scripts that you run, like `pnpm dev` and setup dependencies. You may do some slight modifications manually, but you can also use a package manager like `pnpm` to add additional dependencies.
+-   **pnpm-lock.yaml \[File\]**: This file is generated by `pnpm` and should not be modified directly. This will create a package lock, so that you will always download the correct versions of the packages that you used and only update the packages when you tell `pnpm` to update those packages. This helps if there are any breaking changes in the packages you are using.
+-   **tsconfig.json \[File\]**: This file is used to configure settings for Typescript. As you start to use other tools ontop of Astro, you will see more and more configs for each tool you use.
 
 ## Setting Up Tailwind CSS
 
@@ -137,12 +140,12 @@ This will create a `tailwind.config.js` file in your project. Astro will automat
 ```javascript
 /** @type {import('tailwindcss').Config} */
 export default {
-	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-	theme: {
-		extend: {},
-	},
-	plugins: [],
-}
+    content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+    theme: {
+        extend: {}
+    },
+    plugins: []
+};
 ```
 
 Astro will also update the astro config file:
@@ -150,11 +153,11 @@ Astro will also update the astro config file:
 ```javascript
 import { defineConfig } from 'astro/config';
 
-import tailwind from "@astrojs/tailwind";
+import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind()]
+    integrations: [tailwind()]
 });
 ```
 
@@ -166,7 +169,7 @@ You might have seen in other articles where there is a step to add the base tail
 @tailwind utilities;
 ```
 
-For Astro, we don't need to do this, as these files are automatically added by default. You can configure Astro to exclude the base directives if you would like, but we will keep them. 
+For Astro, we don't need to do this, as these files are automatically added by default. You can configure Astro to exclude the base directives if you would like, but we will keep them.
 
 ### Verify Tailwind Setup
 
@@ -174,7 +177,7 @@ If you look at the page now using `pnpm dev`, you can see the font has slightly 
 
 ## Setting Up The Base Layout
 
-Astro has a concept of layouts. These files don't have to be put into the `layouts/` folder, but that is what we are going to do here. We are just going to start with a very basic layout that looks like this:
+Astro introduces the concept of layouts. While these files don't have to be placed in the layouts/ folder, that's what we will do here. We are just going to start with a very basic layout that looks like this:
 
 ```plaintext
 ┌────────────┐
@@ -197,8 +200,8 @@ Files we need to create:
         └── index.astro
 ```
 
-1. Create a `src/layouts/` folder. 
-1. Create a new file called `BaseLayout.astro`. 
+1. Create a `src/layouts/` folder.
+1. Create a new file called `BaseLayout.astro`.
 1. Add the follow code into `BaseLayout.astro`:
 
     ```astro
@@ -224,15 +227,14 @@ Files we need to create:
 
     ```astro
     ---
-    import BaseLayout from "../layouts/BaseLayout.astro";
+    import BaseLayout from '../layouts/BaseLayout.astro';
 
-    const indexPageTitle = "My Blog";
+    const indexPageTitle = 'My Blog';
     ---
 
     <BaseLayout pageTitle={indexPageTitle}>
         <span class="text-5xl">Astro</span>
     </BaseLayout>
-
     ```
 
 ### Explanation Of Changes
@@ -264,39 +266,60 @@ Files we need to create:
         └── Header.astro
 ```
 
-1. Create a `src/components/` folder. 
-1. Create a new file called `Header.astro`. 
+1. Create a `src/components/` folder.
+1. Create a new file called `Header.astro`.
 1. Add the follow code into `Header.astro`:
 
     ```astro
     ---
+
     ---
 
     <nav class="bg-gray-800">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="flex h-16 justify-between">
-            <div class="flex">
-                <div class="flex flex-shrink-0 items-center">
-                    <a href="/" class="flex">
-                    <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
-                    </a>
+                <div class="flex">
+                    <div class="flex flex-shrink-0 items-center">
+                        <a href="/" class="flex">
+                            <img
+                                class="h-8 w-auto"
+                                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                                alt="Your Company"
+                            />
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <!-- Posts Button Here -->
-            <div class="flex items-center">
-                <div class="hidden md:ml-4 md:flex md:flex-shrink-0 md:items-center">
-                    <button type="button" class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                        <span class="absolute -inset-1.5"></span>
-                        <span class="sr-only">View notifications</span>
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
-                        </svg>
-                    </button>
+                <!-- Posts Button Here -->
+                <div class="flex items-center">
+                    <div
+                        class="hidden md:ml-4 md:flex md:flex-shrink-0 md:items-center"
+                    >
+                        <button
+                            type="button"
+                            class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                        >
+                            <span class="absolute -inset-1.5"></span>
+                            <span class="sr-only">View notifications</span>
+                            <svg
+                                class="h-6 w-6"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
+                                ></path>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </nav>
-
     ```
 
     If you want to know more about what each class means, you will need to look at the Tailwind documentation. Just as an example, you can look up `max-w-7xl` and it would lead you here: https://tailwindcss.com/docs/max-width.
@@ -305,7 +328,7 @@ Files we need to create:
 
     ```astro
     ---
-    import Header from "../components/Header.astro";
+    import Header from '../components/Header.astro';
 
     const { pageTitle } = Astro.props;
     ---
@@ -378,20 +401,19 @@ Files we need to create:
 
     const postCollection = defineCollection({
         type: 'content',
-        schema: postSchema,
+        schema: postSchema
     });
 
     export const collections = {
-        'posts': postCollection,
+        posts: postCollection
     };
-
     ```
 
 ### Explanation Of Changes
 
-- We created a new schema for our blog posts. This creates an object that we can use to validate if the metadata of the blog post is correct. Astro uses [Front Matter](https://frontmatter.codes/docs/markdown) to define metadata about the markdown file itself. Think of this as our database and we will use the Astro API to query this database later. We build this schema using the Zod library under the hood. I wanted to show some of the capabilties on the image processor in Astro, so we have a property for an image that we will also user later on. Hopefully this is pretty self explanatory in that you can use chaining to define how a parameter should validate. For more information, you can look at the Astro and Zod documentation. The only thing that is a bit special is the `image` parameter being passed in. We will see why this is important later on.
+-   We created a new schema for our blog posts. This creates an object that we can use to validate if the metadata of the blog post is correct. Astro uses [Front Matter](https://frontmatter.codes/docs/markdown) to define metadata about the markdown file itself. Think of this as our database and we will use the Astro API to query this database later. We build this schema using the Zod library under the hood. I wanted to show some of the capabilties on the image processor in Astro, so we have a property for an image that we will also user later on. Hopefully this is pretty self explanatory in that you can use chaining to define how a parameter should validate. For more information, you can look at the Astro and Zod documentation. The only thing that is a bit special is the `image` parameter being passed in. We will see why this is important later on.
 
-- We created a collection and told Astro that we have a new collection. We specified that in the special file `src/content/config.ts`. You can see we how we import the Schema and then used that create a new collection. We define the collection in `export const collections = {` the name of the collection needs to match the folder `src/content/posts/`. You can add other collections by creating a new folder and schema and then adding it in the config just like we did here.
+-   We created a collection and told Astro that we have a new collection. We specified that in the special file `src/content/config.ts`. You can see we how we import the Schema and then used that create a new collection. We define the collection in `export const collections = {` the name of the collection needs to match the folder `src/content/posts/`. You can add other collections by creating a new folder and schema and then adding it in the config just like we did here.
 
 ## Verify And Test Our Collection
 
@@ -414,18 +436,18 @@ Files we need to create:
     ```markdown
     ---
     title: Second blog post
-    description: "Second blog post to try out images"
+    description: 'Second blog post to try out images'
     publishedDate: 2022-07-08
     featured: true
     draft: false
-    postimage: 
-        src: "../../assets/firstpost/firstpostimage.png"
-        alt: "My Image"
+    postimage:
+        src: '../../assets/firstpost/firstpostimage.png'
+        alt: 'My Image'
     ---
 
     After a successful first week learning Astro, I decided to try some more. I wrote and imported a small component from memory!
-
     ```
+
 1. Create a debug file called `postscollection.astro` in `src/pages/` with the contents of:
 
     ```astro
@@ -440,17 +462,19 @@ Files we need to create:
     <h1>Posts Collection</h1>
 
     <Debug {posts} />
-
     ```
 
 1. Browse to http://localhost:4321/postscollection. If the collection is working, you will now see a list of the all the pages under the `src/content/posts/` folder. In this case, we only have the 1 post, but you can add more and you will see them populate.
 
 ### Explanation Of Changes
 
-- We created a dummy markdown file with the required metadata. Go ahead and try to create a markdown file where you are missing a required field. Return the debug page and see what error you get. You can now see that the schema is working to validate front matter data and that we can use Astro's API to return a collection. You can sort of see how this can be used as a database in a way.
+-   We created a dummy markdown file with the required metadata.
 
-- We created a Debug page. This page can be called anything you would like to call it. We are just using this page to make sure we can call the `getCollection` API. We will be using this same code to create pages for all of our Markdown files and properly render them.
+    ```
+    Go ahead and try to create a markdown file where you are missing a required field. Return the debug page and see what error you get. You can now see that the schema is working to validate front matter data and that we can use Astro's API to return a collection. You can sort of see how this can be used as a database in a way.
+    ```
 
+-   We created a Debug page. This page can be called anything you would like to call it. We are just using this page to make sure we can call the `getCollection` API. We will be using this same code to create pages for all of our Markdown files and properly render them.
 
 ## Create A Markdown Layout For Post Pages
 
@@ -483,23 +507,35 @@ Files we need to create:
 
     ```astro
     ---
-    import type { CollectionEntry } from "astro:content";
-    import { Image } from "astro:assets";
+    import type { CollectionEntry } from 'astro:content';
+    import { Image } from 'astro:assets';
 
-    import BaseLayout from "./BaseLayout.astro";
+    import BaseLayout from './BaseLayout.astro';
 
     interface Props {
-        post: CollectionEntry<"posts">;
+        post: CollectionEntry<'posts'>;
     }
 
     const { post } = Astro.props;
     ---
+
     <BaseLayout pageTitle={post.data.title}>
         <div class="py-8 sm:py-16">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                <Image src={post.data.postimage!.src} alt={post.data.postimage!.alt} width="200" height="200"></Image>
-                <span class="text-3xl flex">{post.data.title}</span>
-                <span>Published: {new Date(post.data.publishedDate).toLocaleDateString("en-US")}</span>
+                <Image
+                    src={post.data.postimage!.src}
+                    alt={post.data.postimage!.alt}
+                    width="200"
+                    height="200"
+                />
+                <span class="flex text-3xl">{post.data.title}</span>
+                <span
+                    >Published: {
+                        new Date(post.data.publishedDate).toLocaleDateString(
+                            'en-US'
+                        )
+                    }</span
+                >
                 <p class="my-6 text-lg leading-8">
                     {post.data.description}
                 </p>
@@ -509,8 +545,6 @@ Files we need to create:
             </div>
         </div>
     </BaseLayout>
-
-
     ```
 
 1. Create a new folder `src/pages/post`.
@@ -518,14 +552,14 @@ Files we need to create:
 
     ```astro
     ---
-    import { getCollection } from "astro:content";
-    import MarkdownPostLayout from "../../layouts/MarkdownPostLayout.astro";
+    import { getCollection } from 'astro:content';
+    import MarkdownPostLayout from '../../layouts/MarkdownPostLayout.astro';
 
     export async function getStaticPaths() {
-        const posts = await getCollection("posts");
+        const posts = await getCollection('posts');
         return posts.map((post) => ({
             params: { slug: post.slug },
-            props: { post },
+            props: { post }
         }));
     }
 
@@ -536,34 +570,34 @@ Files we need to create:
     <MarkdownPostLayout post={post}>
         <Content />
     </MarkdownPostLayout>
-
     ```
 
 ### Explanation Of Changes
 
 1. We added an image that will go with out `firstpost`. More on this later.
 1. We installed the `sharp` package. More on this later.
-1. We created a new layout called `MarkdownPostLayout.astro` to render our markdown and embed that into some HTML. 
+1. We created a new layout called `MarkdownPostLayout.astro` to render our markdown and embed that into some HTML.
 
-    - We grab the schema from what a post should look like. You don't have to do this and you can unpack variables like normal and reference them as front matter properties. We do this because it's easier to reference what is available to use within our IDE. We can use autocompletion to quickly set the fields where we want. 
+    - We grab the schema from what a post should look like. You don't have to do this and you can unpack variables like normal and reference them as front matter properties. We do this because it's easier to reference what is available to use within our IDE. We can use autocompletion to quickly set the fields where we want.
 
     - We import the `BaseLayout` and wrap it around a `<slot />` element. Remember, when we use this layout as component, anything inside the component element will replace the `<slot \>` element. More on this when we talk about the `[..slug].astro` page.
 
     - The `post.data.postimage!.src` has a null check there. We are ignoring this since in our schema validation, this is a required field and it is not optional. We know this can never be null. You could explicity check if it's null and then render the `Image` component like so:
 
-        ```javascript 
+        ```javascript
         {
-            post.data.postimage?.src && 
-            <Image
-                src={post.data.postimage.src}
-                alt={post.data.postimage.alt}
-                width="200"
-                height="200"
-                format="png"
-            >
-            </Image>
+            post.data.postimage?.src && (
+                <Image
+                    src={post.data.postimage.src}
+                    alt={post.data.postimage.alt}
+                    width="200"
+                    height="200"
+                    format="png"
+                ></Image>
+            );
         }
         ```
+
     - Everything else is just styling and additional information that we want to show on the post's page. With this, we still have the styled header, just like on the home page and we have a main section to put our content into. We do a little formatting to make it look somewhat decent.
 
 1. We created a `[..slug].astro` under the `src/pages/post/` folder.
@@ -596,26 +630,27 @@ Before continuing, see if you can create a new page to list and link to the post
 
     ```astro
     ---
-    import { getCollection } from "astro:content";
-    import BaseLayout from "../layouts/BaseLayout.astro";
+    import { getCollection } from 'astro:content';
+    import BaseLayout from '../layouts/BaseLayout.astro';
 
-    const publishedPosts = await getCollection("posts", ({ data }) => {
+    const publishedPosts = await getCollection('posts', ({ data }) => {
         return data.draft !== true;
     });
 
-    const sortedPosts = publishedPosts
-        .sort(
-            (a, b) =>
-                b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf(),
-        )
+    const sortedPosts = publishedPosts.sort(
+        (a, b) =>
+            b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf()
+    );
     ---
 
     <BaseLayout pageTitle="List of Posts">
-        <div class="mx-auto max-w-7xl px-6 lg:px-8 mt-10">
+        <div class="mx-auto mt-10 max-w-7xl px-6 lg:px-8">
             <ul>
                 {
                     sortedPosts.map((post) => (
-                        <li class="list-disc"><a href=`/post/${post.slug}` >{post.data.title}</a></li>
+                        <li class="list-disc">
+                            <a href={`/post/${post.slug}`}>{post.data.title}</a>
+                        </li>
                     ))
                 }
             </ul>
@@ -626,9 +661,13 @@ Before continuing, see if you can create a new page to list and link to the post
 1. Modify `src/components/Header.astro` and replace `<!-- Posts Button Here -->` with:
 
     ```html
-        <div class="flex items-center">
-            <a href="/posts" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 ">Posts</a>
-        </div>
+    <div class="flex items-center">
+        <a
+            href="/posts"
+            class="rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 "
+            >Posts</a
+        >
+    </div>
     ```
 
     This should go right after the company logo and before the notification button.
@@ -652,12 +691,12 @@ As I mentioned before, you can run `pnpm build` to build the static assets. Thes
     ```bash
     19:26:54   ▶ /_astro/firstpostimage.dH7VHyWq_1N46Q2.png (before: 1029kB, after: 79kB) (+63ms) (1/1)
     ```
+
 You can see we went from a 1MB file down to an 80kb file. In future articles, we will extend this even further and create picture sets to show the same image with different sizes depending on if the device is mobile or desktop.
 
 If the build ran successfully, then we can deploy the app to Cloudflare pages.
 
-
-# Deploying on Cloudflare Pages
+# Deploying On Cloudflare Pages
 
 I am not going to explain every step in detail here, but simply outline the basic steps.
 
@@ -669,7 +708,7 @@ I am not going to explain every step in detail here, but simply outline the basi
 
 1. Go to Create application.
 
-1. Select the Pages tab. 
+1. Select the Pages tab.
 
 1. Select connect to Git.
 
@@ -679,13 +718,13 @@ I am not going to explain every step in detail here, but simply outline the basi
 
 1. Click save and Deploy.
 
-1. Once the build is complete and the site is deploy, you should be able to access the site using the unique URL that cloudflare gave to you. This should be based on the project name. Something like https://<project_name>.pages.dev.
+1. Once the build is complete and the site is deploy, you should be able to access the site using the unique URL that cloudflare gave to you. This should be based on the project name. Something like https://\<project_name\>.pages.dev.
 
 1. Feel free to open the developer console (F12) in Chrome and run the lighthouse test. You may need to do this in a private window if you have a lot of chrome plugins. You can see the optimization and a score for SEO purposes.
 
 # Final Thoughts
 
-I heard a lot of great things about Astro. I wanted to try it out myself. I am by no means a frontend developer, so I wanted something a bit simplier than React. I think Astro checks that box for me. It was easy to use and setup and I am enjoying my time using Astro. It was easy to get started. The initial files that it generates is pretty minimal compared to other frameworks. As I start to add more stuff and go beyond static site, I will look into using HTMX. I can see why Astro paired with HTMX can be a match made in heaven.
+I heard a lot of great things about Astro. I wanted to try it out myself. As I am not primarily a frontend developer, I was looking for something a bit simpler than React. I think Astro checks that box for me. It was easy to use and setup and I am enjoying my time using Astro. It was easy to get started. The initial files that it generates is pretty minimal compared to other frameworks. As I start to add more stuff and go beyond static site, I will look into using HTMX. I can see why Astro paired with HTMX can be a match made in heaven.
 
 I really like using Tailwind. I think it's easier than trying to create classes and then adding styles to those classes. It's easier to just see the styling in my HTML code as it makes it easier to debug. I also don't have to worry about removing unneeded styles, which reduces the total size of my CSS files. Tailwind will only include the classes that you use. It's less thinking and more doing.
 

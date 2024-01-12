@@ -1,20 +1,18 @@
 ---
-
 import '../styles/articles.css';
-
 ---
 
 <div
-    class="prose
+    class="prose-[class~='contains-task-list']:list-style-type:none
+        prose
+        max-w-7xl
         dark:prose-invert
-        prose-h1:font-bold
-        prose-h1:text-xl
         prose-headings:pt-10
-        prose-a:text-blue-600
+        prose-h1:text-xl
+        prose-h1:font-bold
         prose-p:text-justify
-        prose-img:rounded-xl
-        prose-[class~='contains-task-list']:list-style-type:none
-        max-w-7xl"
-    >
+        prose-a:text-blue-600
+        prose-img:rounded-xl"
+>
     <slot />
 </div>

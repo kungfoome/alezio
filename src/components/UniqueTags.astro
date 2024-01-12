@@ -1,9 +1,9 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection } from 'astro:content';
 
-import { articleSchema } from "../schemas/ArticleSchema";
+import { articleSchema } from '../schemas/ArticleSchema';
 
-const publishedArticles = await getCollection("articles", ({ data }) => {
+const publishedArticles = await getCollection('articles', ({ data }) => {
     return data.draft !== true;
 });
 

@@ -1,9 +1,9 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection } from 'astro:content';
 
-import ArticleFeaturedCard from "./ArticleFeaturedCard.astro";
+import ArticleFeaturedCard from './ArticleFeaturedCard.astro';
 
-const publishedArticleEntries = await getCollection("articles", ({ data }) => {
+const publishedArticleEntries = await getCollection('articles', ({ data }) => {
     return data.draft !== true;
 });
 
@@ -11,15 +11,17 @@ const featuredAndLimitedPosts = publishedArticleEntries
     .filter((article) => article.data.featured)
     .sort(
         (a, b) =>
-            b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf(),
+            b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf()
     )
     .slice(0, 3);
 ---
 
-<div class="bg-white dark:bg-gray-900 py-8 sm:py-16">
+<div class="bg-white py-8 dark:bg-gray-900 sm:py-16">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-2xl text-center">
-            <h2 class="text-2xl font-bold font-roboto tracking-tight text-gray-900 sm:text-3xl dark:text-white">
+            <h2
+                class="font-roboto text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl"
+            >
                 Featured
             </h2>
         </div>
