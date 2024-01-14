@@ -1,13 +1,9 @@
 ---
-import { getCollection } from 'astro:content';
+import { getPublishedPosts } from '../lib/articles';
 
 import ArticleLatestCard from './ArticleLatestCard.astro';
 
-const publishedArticleEntries = await getCollection('articles', ({ data }) => {
-    return data.draft !== true;
-});
-
-const sortedAndLimitPosts = publishedArticleEntries
+const sortedAndLimitPosts = (await getPublishedPosts())
     .sort(
         (a, b) =>
             b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf()

@@ -1,13 +1,9 @@
 ---
-import { getCollection } from 'astro:content';
+import { getPublishedPosts } from '../lib/articles';
 
 import ArticleFeaturedCard from './ArticleFeaturedCard.astro';
 
-const publishedArticleEntries = await getCollection('articles', ({ data }) => {
-    return data.draft !== true;
-});
-
-const featuredAndLimitedPosts = publishedArticleEntries
+const featuredAndLimitedPosts = (await getPublishedPosts())
     .filter((article) => article.data.featured)
     .sort(
         (a, b) =>
