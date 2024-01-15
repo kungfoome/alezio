@@ -29,9 +29,9 @@ export async function getStaticPaths() {
 const { articles, prettyTag } = Astro.props;
 ---
 
-<div class="min-h-screen bg-white dark:bg-gray-900 dark:text-gray-300">
+<div class="min-h-screen bg-white dark:bg-gray-800 dark:text-gray-300">
     <BaseLayout pageTitle={prettyTag}>
-        <div class="bg-white py-8 dark:bg-gray-700 sm:py-16">
+        <div class="py-8 sm:py-16">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
                 <div class="mx-auto">
                     <h2
@@ -40,14 +40,12 @@ const { articles, prettyTag } = Astro.props;
                         <p>
                             <a
                                 href="/tags"
-                                class="text-indigo-600 dark:text-indigo-400"
+                                class="text-blue-600 hover:text-blue-800 dark:text-pink-500 dark:hover:text-pink-400"
                                 >Tags</a
                             > → {prettyTag}
                         </p>
                     </h2>
-                    <div
-                        class="mt-10 space-y-16 border-t border-gray-200 pt-10 sm:mt-6 sm:pt-12"
-                    >
+                    <div class="mt-10 space-y-16 pt-10 sm:mt-6 sm:pt-12">
                         {
                             articles.map((article) => (
                                 <ArticleCard article={article} />
