@@ -1,15 +1,12 @@
 ---
-import { getPublishedPosts } from '../lib/articles';
+import { getPublishedArticles } from '../lib/articles';
 
 import ArticleFeaturedCard from './ArticleFeaturedCard.astro';
 
-const featuredAndLimitedPosts = (await getPublishedPosts())
-    .filter((article) => article.data.featured)
-    .sort(
-        (a, b) =>
-            b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf()
-    )
-    .slice(0, 3);
+const featuredArticles = await getPublishedArticles({
+    customFilter: article => article.data.featured,
+    limit: 3,
+});
 ---
 
 <div class="bg-white py-8 dark:bg-gray-900 sm:py-16">
@@ -25,7 +22,7 @@ const featuredAndLimitedPosts = (await getPublishedPosts())
             class="mx-auto mt-5 grid max-w-2xl auto-rows-fr grid-cols-1 gap-8 sm:mt-10 lg:mx-0 lg:max-w-none lg:grid-cols-3"
         >
             {
-                featuredAndLimitedPosts.map((article) => (
+                featuredArticles.map((article) => (
                     <ArticleFeaturedCard article={article} />
                 ))
             }

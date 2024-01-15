@@ -1,11 +1,11 @@
 ---
-import { getPublishedPosts } from '../../lib/articles';
+import { getPublishedArticles } from '../../lib/articles';
 
 import MarkdownPostLayout from '../../layouts/MarkdownPostLayout.astro';
 import Prose from '../../components/Prose.astro';
 
 export async function getStaticPaths() {
-    return (await getPublishedPosts()).map((article) => ({
+    return (await getPublishedArticles()).map((article) => ({
         params: { slug: article.slug },
         props: { article }
     }));

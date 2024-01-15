@@ -15,12 +15,12 @@ This is my code for https://alez.io. I have created a blog post series that goes
 -   [x] MDX plugin to add custom code and components in markdown
 -   [x] Configure Prettier for format Tailwind
 -   [x] CTA block for articles
+-   [X] Sitemap
 -   [ ] Article Search
 -   [ ] Tag Search
 -   [ ] Related Articles by tag?
 -   [ ] Table of Contents in Articles
 -   [ ] RSS Feed
--   [ ] Sitemap
 -   [ ] SEO metadata
 -   [ ] Contact page
 -   [ ] Fix inline code styling `code` should be like a normal code block, but inline

@@ -1,14 +1,11 @@
 ---
-import { getPublishedPosts } from '../lib/articles';
+import { getPublishedArticles } from '../lib/articles';
 
 import ArticleLatestCard from './ArticleLatestCard.astro';
 
-const sortedAndLimitPosts = (await getPublishedPosts())
-    .sort(
-        (a, b) =>
-            b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf()
-    )
-    .slice(0, 10);
+const articles = await getPublishedArticles({
+    limit: 10,
+});
 ---
 
 <div class="bg-white py-8 dark:bg-gray-700 sm:py-16">
@@ -23,7 +20,7 @@ const sortedAndLimitPosts = (await getPublishedPosts())
                 class="mt-10 space-y-16 border-t border-gray-200 pt-10 sm:mt-6 sm:pt-12"
             >
                 {
-                    sortedAndLimitPosts.map((article) => (
+                    articles.map((article) => (
                         <ArticleLatestCard article={article} />
                     ))
                 }
