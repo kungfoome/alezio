@@ -16,8 +16,9 @@ This is my code for https://alez.io. I have created a blog post series that goes
 -   [x] Configure Prettier for format Tailwind
 -   [x] CTA block for articles
 -   [x] Sitemap
--   [ ] Article Search
--   [ ] Tag Search
+-   [x] Generate static tag pages that shows tag specific blogs
+-   [ ] Add Tag page that shows all tags
+-   [ ] Article search to search in article title, description, or content
 -   [ ] Related Articles by tag?
 -   [ ] Table of Contents in Articles
 -   [ ] RSS Feed
