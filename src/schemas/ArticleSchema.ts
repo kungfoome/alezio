@@ -16,13 +16,18 @@ export enum ImageSize {
     XL = 21
 }
 
+export enum Tags {
+    SRE = 'SRE',
+    Frontend = 'Frontend',
+    PlatformEngineering = 'Platform Engineering',
+    Gaming = 'Gaming'
+}
+
 export const imageSchema = ({ image }: SchemaContext) =>
     z.object({
         src: image(),
         alt: z.string(),
-        blur: z
-            .enum([Blur.None, Blur.SM, Blur.MD, Blur.LG, Blur.XL])
-            .optional(),
+        blur: z.nativeEnum(Blur).optional(),
         imageSizeMobile: z
             .union([
                 z.literal(ImageSize.XS),
@@ -59,7 +64,7 @@ export const articleSchema = ({ image }: { image: any }) =>
             .transform((str) => (str ? new Date(str) : undefined)),
         featured: z.boolean().default(false),
         draft: z.boolean().default(true),
-        tags: z.array(z.enum(['SRE', 'Frontend', 'Platform Engineering'])),
+        tags: z.array(z.nativeEnum(Tags)),
         featuredimage: imageSchema({ image }).optional(),
         heroimage: imageSchema({ image }).optional(),
         git: z

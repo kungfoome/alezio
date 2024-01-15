@@ -6,7 +6,7 @@ featuredimage:
     src: './featureimage.png'
     alt: 'Digital world'
 publishedDate: 2022-07-08
-tags: ['Frontend']
+tags: ['Platform Engineering']
 featured: true
 draft: true
 ---
