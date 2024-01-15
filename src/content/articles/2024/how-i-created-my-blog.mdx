@@ -474,12 +474,8 @@ Files we need to create:
 
 -   We created a dummy markdown file with the required metadata.
 
-    {' '}
-
-    <ArticleCTA>
-        Go ahead and try to create a markdown file where you are missing a
-        required field. Return to the debug page and see what error you get.
-    </ArticleCTA>
+    {/* prettier-ignore */}
+    <ArticleCTA>Go ahead and try to create a markdown file where you are missing a required field. Return to the debug page and see what error you get.</ArticleCTA>
 
     You can now see that the schema is working to validate front matter data and that we can use Astro's API to return a collection. You can sort of see how this can be used as a database in a way.
 
@@ -583,15 +579,15 @@ Files we need to create:
 
 ### Explanation Of Changes
 
-1. We added an image that will go with out `firstpost`. More on this later.
-1. We installed the `sharp` package. More on this later.
-1. We created a new layout called `MarkdownPostLayout.astro` to render our markdown and embed that into some HTML.
+1.  We added an image that will go with out `firstpost`. More on this later.
+1.  We installed the `sharp` package. More on this later.
+1.  We created a new layout called `MarkdownPostLayout.astro` to render our markdown and embed that into some HTML.
 
-    - We grab the schema from what a post should look like. You do not have to do this and you can unpack variables like normal and reference them as front matter properties. We do this because it is easier to reference what is available to use within our IDE. We can use autocompletion to quickly set the fields where we want.
+    -   We grab the schema from what a post should look like. You do not have to do this and you can unpack variables like normal and reference them as front matter properties. We do this because it is easier to reference what is available to use within our IDE. We can use autocompletion to quickly set the fields where we want.
 
-    - We import the `BaseLayout` and wrap it around a `<slot />` element. Remember, when we use this layout as component, anything inside the component element will replace the `<slot \>` element. More on this when we talk about the `[..slug].astro` page.
+    -   We import the `BaseLayout` and wrap it around a `<slot />` element. Remember, when we use this layout as component, anything inside the component element will replace the `<slot \>` element. More on this when we talk about the `[..slug].astro` page.
 
-    - The `post.data.postimage!.src` has a null check there. We are ignoring this since in our schema validation, this is a required field and it is not optional. We know this can never be null. You could explicity check if it is null and then render the `Image` component like so:
+    -   The `post.data.postimage!.src` has a null check there. We are ignoring this since in our schema validation, this is a required field and it is not optional. We know this can never be null. You could explicity check if it is null and then render the `Image` component like so:
 
         ```javascript
         {
@@ -607,47 +603,22 @@ Files we need to create:
         }
         ```
 
-    - Everything else is just styling and additional information that we want to show on the post's page. With this, we still have the styled header, just like on the home page and we have a main section to put our content into. We do a little formatting to make it look somewhat decent.
+    -   Everything else is just styling and additional information that we want to show on the post's page. With this, we still have the styled header, just like on the home page and we have a main section to put our content into. We do a little formatting to make it look somewhat decent.
 
-1. We created a `[..slug].astro` under the `src/pages/post/` folder.
+1.  We created a `[..slug].astro` under the `src/pages/post/` folder.
 
-    - Remember that the `pages/` folder is a special folder that defines a route. In this case the `post` folder creates a route to `/post/[slug]`. Where slug is the slug name of the post. The slug name is the name of the file that has been converted to remove special characters and spaces. For our example, this would be `firstpost` and the complete path would be `mysite.com/post/firstpost`.
+    -   Remember that the `pages/` folder is a special folder that defines a route. In this case the `post` folder creates a route to `/post/[slug]`. Where slug is the slug name of the post. The slug name is the name of the file that has been converted to remove special characters and spaces. For our example, this would be `firstpost` and the complete path would be `mysite.com/post/firstpost`.
 
-    - The `[..slug]` name is a special name for Astro. There are many ways to create routes in Astro and you should read the documentation to further explore what those options are and how you want to do it. By using slug, we are generating a path based on the `src/contents/` structure.
+    -   The `[..slug]` name is a special name for Astro. There are many ways to create routes in Astro and you should read the documentation to further explore what those options are and how you want to do it. By using slug, we are generating a path based on the `src/contents/` structure.
 
-        {' '}
+        {/* prettier-ignore */}
+        <ArticleCTA>You can try this out by creating a new folder **src/contents/posts/2024/** and then copying and moving the **firstpost.md** file into the **2024/** folder. Make sure you update the relative image location to **../../../assets/firstpost/firstpostimage.png**. Browse to **http://localhost:4321/postscollection** and look at the **slug** field</ArticleCTA>
 
-        {' '}
+    The URL now turns into `mysite.com/post/2024/firstpost`.
 
-        {' '}
+    -   Speaking of the debug component. Remember how we queried all the posts within the collection. We do that here as well. The only difference is that we need to tell Astro how to create the routes by using the `getStaticPaths` function. This is how we are able to browse to the individual posts.
 
-        {' '}
-
-        {' '}
-
-        {' '}
-
-        {' '}
-
-        {' '}
-
-        {' '}
-
-        {' '}
-        <ArticleCTA>
-            You can try this out by creating a new folder
-            **src/contents/posts/2024/** and then copying and moving the
-            **firstpost.md** file into the **2024/** folder. Make sure you
-            update the relative image location to
-            **../../../assets/firstpost/firstpostimage.png**. Browse to
-            **http://localhost:4321/postscollection** and look at the **slug**
-            field
-        </ArticleCTA>
-        The URL now turns into `mysite.com/post/2024/firstpost`.
-
-    - Speaking of the debug component. Remember how we queried all the posts within the collection. We do that here as well. The only difference is that we need to tell Astro how to create the routes by using the `getStaticPaths` function. This is how we are able to browse to the individual posts.
-
-    - The last thing is that we need to grab the markdown content and render it. We do that by using `post.render()`. This will use the library of your choice (default is remark) to take markdown code and convert it to HTML. We then pass that into the `MarkdownPostLayout` component using the new `Content` component that holds the markdown HTML. This HTML replaces the `<slot />` element that we specified inside the `MarkdownPostLayout` file.
+    -   The last thing is that we need to grab the markdown content and render it. We do that by using `post.render()`. This will use the library of your choice (default is remark) to take markdown code and convert it to HTML. We then pass that into the `MarkdownPostLayout` component using the new `Content` component that holds the markdown HTML. This HTML replaces the `<slot />` element that we specified inside the `MarkdownPostLayout` file.
 
 ### Checkpoint
 
@@ -655,14 +626,8 @@ At this point, we can now create as many markdown files as we want and place the
 
 ## Create A Page With A List Of Posts
 
-<ArticleCTA>
-    ***Before continuing***, see if you can create a new page to list and link
-    to the posts. You know how to get a collection of posts in the
-    **postscollection.astro** page. You know how to style a page using the
-    **BaseLayout**. You know how to create new pages under the **src/pages/**
-    folder. Link to the posts using this href format: **{`/post/\${post.slug}`}
-    **.
-</ArticleCTA>
+{/* prettier-ignore */}
+<ArticleCTA>***Before continuing***, see if you can create a new page to list and link to the posts. You know how to get a collection of posts in the **postscollection.astro** page. You know how to style a page using the **BaseLayout**. You know how to create new pages under the **src/pages/** folder. Link to the posts using this href format: **{`/post/\${post.slug}`}**.</ArticleCTA>
 
 ```plaintext
 /
