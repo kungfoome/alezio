@@ -10,7 +10,7 @@ type SortField = keyof Article['data'] | keyof Article;
 export async function getPublishedArticles({
     customFilter = null,
     sortBy = 'publishedDate',
-    sortOrder = 'none',
+    sortOrder = 'descend',
     limit = 10,
     page = 1
 }: {
