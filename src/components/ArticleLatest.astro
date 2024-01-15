@@ -1,7 +1,7 @@
 ---
 import { getPublishedArticles } from '../lib/articles';
 
-import ArticleLatestCard from './ArticleLatestCard.astro';
+import ArticleCard from './ArticleCard.astro';
 
 const articles = await getPublishedArticles({
     limit: 10
@@ -19,11 +19,7 @@ const articles = await getPublishedArticles({
             <div
                 class="mt-10 space-y-16 border-t border-gray-200 pt-10 sm:mt-6 sm:pt-12"
             >
-                {
-                    articles.map((article) => (
-                        <ArticleLatestCard article={article} />
-                    ))
-                }
+                {articles.map((article) => <ArticleCard article={article} />)}
             </div>
         </div>
     </div>
