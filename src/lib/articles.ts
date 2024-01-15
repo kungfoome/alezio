@@ -14,14 +14,16 @@ export async function getPublishedArticles({
     limit = 10,
     page = 1
 }: {
-    customFilter?: FilterFunction | null,
-    sortBy?: SortField,
-    sortOrder?: SortOrder,
-    limit?: number,
-    page?: number
+    customFilter?: FilterFunction | null;
+    sortBy?: SortField;
+    sortOrder?: SortOrder;
+    limit?: number;
+    page?: number;
 } = {}) {
     const combinedFilter = (article: Article) => {
-        const publishedFilter = import.meta.env.PROD ? article.data.draft !== true : true;
+        const publishedFilter = import.meta.env.PROD
+            ? article.data.draft !== true
+            : true;
         return publishedFilter && (customFilter ? customFilter(article) : true);
     };
 
@@ -41,20 +43,24 @@ export async function getArticles({
     limit = 10,
     page = 1
 }: {
-    customFilter?: FilterFunction | null,
-    sortBy?: SortField,
-    sortOrder?: SortOrder,
-    limit?: number,
-    page?: number
+    customFilter?: FilterFunction | null;
+    sortBy?: SortField;
+    sortOrder?: SortOrder;
+    limit?: number;
+    page?: number;
 } = {}) {
     const allArticles = await getCollection('articles');
 
     const combinedFilter = (article: Article) => {
-        const defaultFilter = import.meta.env.PROD ? article.data.draft !== true : true;
+        const defaultFilter = import.meta.env.PROD
+            ? article.data.draft !== true
+            : true;
         return defaultFilter && (customFilter ? customFilter(article) : true);
     };
 
-    const filteredArticles = allArticles.filter(article => combinedFilter(article));
+    const filteredArticles = allArticles.filter((article) =>
+        combinedFilter(article)
+    );
 
     const sortedArticles = sortArticles(filteredArticles, sortBy, sortOrder);
 
@@ -65,8 +71,11 @@ export async function getArticles({
     return paginatedArticles;
 }
 
-
-function sortArticles(articles: Article[], sortBy: SortField, sortOrder: SortOrder): Article[] {
+function sortArticles(
+    articles: Article[],
+    sortBy: SortField,
+    sortOrder: SortOrder
+): Article[] {
     if (sortOrder === 'none') {
         return articles;
     }
@@ -90,7 +99,8 @@ function sortArticles(articles: Article[], sortBy: SortField, sortOrder: SortOrd
 
         if (sortOrder === 'ascend') {
             return (fieldA ?? '') < (fieldB ?? '') ? -1 : 1;
-        } else { // sortOrder is 'descend'
+        } else {
+            // sortOrder is 'descend'
             return (fieldA ?? '') > (fieldB ?? '') ? -1 : 1;
         }
     });

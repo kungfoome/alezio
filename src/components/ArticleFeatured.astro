@@ -4,8 +4,8 @@ import { getPublishedArticles } from '../lib/articles';
 import ArticleFeaturedCard from './ArticleFeaturedCard.astro';
 
 const featuredArticles = await getPublishedArticles({
-    customFilter: article => article.data.featured,
-    limit: 3,
+    customFilter: (article) => article.data.featured,
+    limit: 3
 });
 ---
 
