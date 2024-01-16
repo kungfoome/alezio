@@ -17,10 +17,10 @@ export enum ImageSize {
 }
 
 export enum Tags {
-    SRE = 'SRE',
-    Frontend = 'Frontend',
+    SRE                 = 'SRE',
+    Frontend            = 'Frontend',
     PlatformEngineering = 'Platform Engineering',
-    Gaming = 'Gaming'
+    Gaming              = 'Gaming'
 }
 
 export const imageSchema = ({ image }: SchemaContext) =>

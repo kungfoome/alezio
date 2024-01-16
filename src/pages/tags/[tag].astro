@@ -10,7 +10,7 @@ export async function getStaticPaths() {
     const articles = await getPublishedArticles();
 
     // We could iterate over the collection tags, but
-    // the enum should always match and is safer to use that
+    // the enum should always match and is safer to use
     return Object.values(Tags).map((tag) => {
         const filteredPosts = articles.filter((article) =>
             article.data.tags.includes(tag)
