@@ -15,41 +15,39 @@ const branch = article.data.git?.branch
     : '';
 ---
 
-<div class="min-h-screen bg-white dark:bg-gray-900 dark:text-gray-300">
-    <BaseLayout pageTitle={article.data.title}>
-        <ArticleHeader article={article} />
-        <div class="py-8 sm:py-16">
-            <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                <span
-                    >Published: {
-                        new Date(article.data.publishedDate).toLocaleDateString(
-                            'en-US'
-                        )
-                    }</span
-                >
-                <p class="my-6 text-lg leading-8">
-                    {article.data.description}
-                </p>
-                {
-                    article.data.git?.repo && (
-                        <>
-                            <p>
-                                <a href={`${article.data.git.repo}/${branch}`}>
-                                    <span class="font-bold">Github Repo:</span>{' '}
-                                    {article.data.git.repo}
-                                </a>
-                            </p>
-                            <p>
-                                <span class="font-bold">Github Branch:</span>{' '}
-                                {article.data.git?.branch}
-                            </p>
-                        </>
+<BaseLayout pageTitle={article.data.title}>
+    <ArticleHeader article={article} />
+    <div class="py-8 sm:py-16">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <span
+                >Published: {
+                    new Date(article.data.publishedDate).toLocaleDateString(
+                        'en-US'
                     )
-                }
-                <div class="mt-10">
-                    <slot />
-                </div>
+                }</span
+            >
+            <p class="my-6 text-lg leading-8">
+                {article.data.description}
+            </p>
+            {
+                article.data.git?.repo && (
+                    <>
+                        <p>
+                            <a href={`${article.data.git.repo}/${branch}`}>
+                                <span class="font-bold">Github Repo:</span>{' '}
+                                {article.data.git.repo}
+                            </a>
+                        </p>
+                        <p>
+                            <span class="font-bold">Github Branch:</span>{' '}
+                            {article.data.git?.branch}
+                        </p>
+                    </>
+                )
+            }
+            <div class="mt-10">
+                <slot />
             </div>
         </div>
-    </BaseLayout>
-</div>
+    </div>
+</BaseLayout>

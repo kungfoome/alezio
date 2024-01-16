@@ -26,8 +26,10 @@ const { pageTitle } = Astro.props;
         </script>
     </head>
     <body>
-        <Header />
-        <slot />
-        <Footer />
+        <div class="min-h-screen bg-white dark:bg-gray-900 dark:text-gray-300">
+            <Header />
+            <slot />
+            <Footer />
+        </div>
     </body>
 </html>
