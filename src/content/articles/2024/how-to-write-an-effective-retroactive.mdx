@@ -29,7 +29,7 @@ Retros are a perfect blend of art and science, requiring honest reflection, crea
 
 # Who This Article Is For
 
-This article is for someone who is looking to improve or implement a new process to do a retroactive. If you do not have a process for retros, you should be able to almost copy and paste what is in this article and apply this to your process. Please tailor anything that is mentioned in this article to your own. You never have to mold a process to what someone says it should be, instead take the key concepts and ideas and apply those to a process that works for you.  
+This article is for someone who is looking to improve or implement a new process to do a retroactive. If you do not have a process for retros, you should be able to almost copy and paste what is in this article and apply this to your process. Please tailor anything that is mentioned in this article to your own. You never have to mold a process to what someone says it should be, instead take the key concepts and ideas and apply those to a process that works for you.
 
 We will not be discussing the full incident management lifecycle, but just the retro piece of it.
 
@@ -37,20 +37,20 @@ We will not be discussing the full incident management lifecycle, but just the r
 
 To ensure we are on the same page with our terms, let us define a few key concepts:
 
--  **Retro:** A process intended to help you learn from past incidents. It involves a blame-free analysis and discussion soon after an event has taken place.
+-   **Retro:** A process intended to help you learn from past incidents. It involves a blame-free analysis and discussion soon after an event has taken place.
 
-- **Incident:** Incident management is the process used by teams to respond to unplanned events or service interruptions, restoring operational stability.
+-   **Incident:** Incident management is the process used by teams to respond to unplanned events or service interruptions, restoring operational stability.
 
-- **Blameless:** Sometimes this can be called blame-aware. What this means is you should assume everyone has good intentions. There is no need to blame anyone for a particular incident that happened. This does not mean to keep a team or person out of the conversations, it simply means to not blame them and everyone should be taking ownership. More on how to best approach this will be discussed later in the article.
+-   **Blameless:** Sometimes this can be called blame-aware. What this means is you should assume everyone has good intentions. There is no need to blame anyone for a particular incident that happened. This does not mean to keep a team or person out of the conversations, it simply means to not blame them and everyone should be taking ownership. More on how to best approach this will be discussed later in the article.
 
-- **Incident Lifecycle:**
+-   **Incident Lifecycle:**
 
     The one thing to point out here is that when an incident is resolved, it does not mean that the incident management process ends there. You need to go further and investigate the possible root cause to prevent the issue from occurring again.
 
-    - **Identify:** Detection of unusual symptoms signaling an issue.
-    - **Investigate:** Determination of the issue's validity and scope. Then continue investigation of the direct cause of the issue.
-    - **Recover:** Direct cause identified and implementation of a solution.
-    - **Closure:** Formal conclusion of the incident, including a retro.
+    -   **Identify:** Detection of unusual symptoms signaling an issue.
+    -   **Investigate:** Determination of the issue's validity and scope. Then continue investigation of the direct cause of the issue.
+    -   **Recover:** Direct cause identified and implementation of a solution.
+    -   **Closure:** Formal conclusion of the incident, including a retro.
 
 # Direct Cause vs Root Cause
 
@@ -84,7 +84,7 @@ All incidents will have a direct cause. The direct cause is NOT the root cause. 
 
 Define specific roles for an incident. Without doing this, the process may never be completed. You want to define roles that work for your company. A lot of key ideas about incident management comes from the Incident Command System (ICS). Understanding ICS helps in appreciating the roles and hierarchy crucial in incident management today, which in turn shapes the structure and effectiveness of our retros.
 
-<Image src={ICSStructureImage} alt="Incident Command System"/>
+<Image src={ICSStructureImage} alt="Incident Command System" />
 
 The ICS concept was formed in 1968 at a meeting of Fire Chiefs in Southern California. The program reflects the management hierarchy of the US Navy, and at first was used mainly to fight California wildfires. During the 1970s, ICS was fully developed during massive wildfire suppression efforts in California (FIRESCOPE) that followed a series of catastrophic wildfires, starting with the massive Laguna fire in 1970. Property damage ran into the millions, and many people died or were injured. Studies determined that response problems often related to communication and management deficiencies rather than lack of resources or failure of tactics
 
@@ -92,11 +92,10 @@ https://en.wikipedia.org/wiki/Incident_Command_System
 
 Let us define some roles that would be helpful in our incident management lifecycle.
 
-- Incident Commander (IC) - Runs the incident and delegates out tasks. There should only be 1 IC to ensure there are not too many chiefs.
-- Subject Matter Expert (SME) - There can be more than 1 SME that can help investigate an issue. There can also be more than 1 SME to help answer questions during the retro process.
-- Communications Liaison - This is a person that would help communicate out to stakeholders. This could also be included with the IC responsibilities, but if you need to do communicate in a legal way, you may want to have someone write those communications.
-- Incident Investigator - This is the person that will ensure the retro is completed and follow-up on any actions that need to take place to ensure that happens. There should only be 1 person assigned to this role.
-
+-   Incident Commander (IC) - Runs the incident and delegates out tasks. There should only be 1 IC to ensure there are not too many chiefs.
+-   Subject Matter Expert (SME) - There can be more than 1 SME that can help investigate an issue. There can also be more than 1 SME to help answer questions during the retro process.
+-   Communications Liaison - This is a person that would help communicate out to stakeholders. This could also be included with the IC responsibilities, but if you need to do communicate in a legal way, you may want to have someone write those communications.
+-   Incident Investigator - This is the person that will ensure the retro is completed and follow-up on any actions that need to take place to ensure that happens. There should only be 1 person assigned to this role.
 
 # Why Should You Do A Retro?
 
@@ -112,21 +111,21 @@ A great retro is one in which you learn how to improve. That is it! You might st
 
 ## 1. Set the ground rules
 
-Establish a set of ground rules. This will ensure that everyone can follow the same process and they know what to expect. 
+Establish a set of ground rules. This will ensure that everyone can follow the same process and they know what to expect.
 
-- Main Objective: Learn and come up with a better understanding of what happened. This would be the root cause. From here on out, I want to keep root cause out of this. I have worked as an SRE for many years now and one thing I found out is that trying to determine the root cause can be difficult for most people. A lot of people do not have any experience using the [5 Whys](https://en.wikipedia.org/wiki/Five_whys) or [Fishbone Diagrams](https://en.wikipedia.org/wiki/Ishikawa_diagram). Plus ,these are bit old and outdated.
+-   Main Objective: Learn and come up with a better understanding of what happened. This would be the root cause. From here on out, I want to keep root cause out of this. I have worked as an SRE for many years now and one thing I found out is that trying to determine the root cause can be difficult for most people. A lot of people do not have any experience using the [5 Whys](https://en.wikipedia.org/wiki/Five_whys) or [Fishbone Diagrams](https://en.wikipedia.org/wiki/Ishikawa_diagram). Plus ,these are bit old and outdated.
 
-- Any action items or improvements should be saved and noted until the main objective is met. This means to have a good understanding as to what happened.
+-   Any action items or improvements should be saved and noted until the main objective is met. This means to have a good understanding as to what happened.
 
-- When talking about a particular person or team and the change that was made to cause an incident, you should talk about why that change was pushed. Why did that change make sense during that time? Example: A new feature went out and your company uses feature flags, but in this case a feature flag was not used. Ask the question, "Why didn't we use a feature flag here"?
+-   When talking about a particular person or team and the change that was made to cause an incident, you should talk about why that change was pushed. Why did that change make sense during that time? Example: A new feature went out and your company uses feature flags, but in this case a feature flag was not used. Ask the question, "Why didn't we use a feature flag here"?
 
-- Focus on how you can improve and do better next time. Stuff will break and it should be expected. Focus on how you can recover faster when something breaks or what you can do to prevent it.
+-   Focus on how you can improve and do better next time. Stuff will break and it should be expected. Focus on how you can recover faster when something breaks or what you can do to prevent it.
 
-- Create a plan to follow during the meeting. An example would be to go through the entire retro first and make sure everyone agrees with the information and timeline. Then people can start to ask questions. You may also want the ability for people to ask questions during certain points of the meeting. In any case, try to make sure it is consistent.
+-   Create a plan to follow during the meeting. An example would be to go through the entire retro first and make sure everyone agrees with the information and timeline. Then people can start to ask questions. You may also want the ability for people to ask questions during certain points of the meeting. In any case, try to make sure it is consistent.
 
-- Ask stupid questions. This should also be done during an incident, but seriously, ask stupid questions. There were plenty of times where I thought I knew how something worked and after asking a stupid question, I then learned how something really worked. If you are really unsure of something, ask it.
+-   Ask stupid questions. This should also be done during an incident, but seriously, ask stupid questions. There were plenty of times where I thought I knew how something worked and after asking a stupid question, I then learned how something really worked. If you are really unsure of something, ask it.
 
-- Get feedback on the retro. This should probably be done async after the meeting, but you or someone else might have ideas on how to better improve the meeting or something that needs more clarity.
+-   Get feedback on the retro. This should probably be done async after the meeting, but you or someone else might have ideas on how to better improve the meeting or something that needs more clarity.
 
 ## 2. Assign an incident investigator
 
@@ -150,10 +149,10 @@ Here are some areas in which you can include into your template:
 
 Include basic information like:
 
-- Link to incident ticket with short description (Database crashed due to lack of memory)
-- Time of: Detection, Acknowledgment, Cause Identified, Mitigation, Resolution
-- Roles: IC, SMEs, Liaisons, Incident Investigator
-- Interviewed: People that were interviewed
+-   Link to incident ticket with short description (Database crashed due to lack of memory)
+-   Time of: Detection, Acknowledgment, Cause Identified, Mitigation, Resolution
+-   Roles: IC, SMEs, Liaisons, Incident Investigator
+-   Interviewed: People that were interviewed
 
 ### Summary
 
@@ -171,11 +170,11 @@ This is an example of a public retro, but internally you should go into more det
 
 **Improvements:**
 
-- How many users were impacted?
-- How much money did we lose from this outage?
-- When did we detect the issue?
-- Did we get any reports from our customers?
-- Do we need to notify our external stakeholders? 
+-   How many users were impacted?
+-   How much money did we lose from this outage?
+-   When did we detect the issue?
+-   Did we get any reports from our customers?
+-   Do we need to notify our external stakeholders?
 
 Think of this as an executive summary for your VPs.
 
@@ -193,20 +192,20 @@ This is an example of a public retro, but internally you should go into more det
 
 **Improvements:**
 
-- If we can get an exact count of total impact users or close to it, we should use this
-number. A good place to find this information would be something like Datadog or
-Bugsnag. Sometimes a complicated db query might have to be put together to piece
-everything together.
+-   If we can get an exact count of total impact users or close to it, we should use this
+    number. A good place to find this information would be something like Datadog or
+    Bugsnag. Sometimes a complicated db query might have to be put together to piece
+    everything together.
 
-- The percentage of users can be used as well, but having a number is always
-better.
+-   The percentage of users can be used as well, but having a number is always
+    better.
 
-- How much did this cost us? We should have made x money in this time period, but instead
-we made y money, so we lost z money.
+-   How much did this cost us? We should have made x money in this time period, but instead
+    we made y money, so we lost z money.
 
-- What services were impacted?
-    - Was this an internal service?
-    - Was this a third-party service that we use?
+-   What services were impacted?
+    -   Was this an internal service?
+    -   Was this a third-party service that we use?
 
 ### Leadup or Trigger
 
@@ -243,6 +242,7 @@ https://www.atlassian.com/engineering/post-incident-review-april-2022-outage
 Describe how the service was restored and the incident was deemed over. Detail how the service was successfully restored and you knew how what steps you needed to take to recovery.
 
 #### Example
+
 https://aws.amazon.com/message/5467D2/
 
 > Initially, we were unable to add capacity to the metadata service because it was under such high load, preventing us from successfully making the requisite administrative requests. After several failed attempts at adding capacity, at 5:06am PDT, we decided to pause requests to the metadata service. This action decreased retry activity, which relieved much of the load on the metadata service. With the metadata service now able to respond to administrative requests, we were able to add significant capacity. Once these adjustments were made, we were able to reactivate requests to the metadata service, put storage servers back into the customer request path, and allow normal load back on the metadata service. At 7:10am PDT, DynamoDB was restored to error rates low enough for most customers and AWS services dependent on DynamoDB to resume normal operations.
@@ -254,10 +254,11 @@ https://aws.amazon.com/message/5467D2/
 Discuss not only what went well and what could be improved but also how these insights can be implemented in future projects. If you had to look at this retro again in a year, what would you want to know about it?
 
 #### Example
+
 https://www.honeycomb.io/blog/incident-report-running-dry-on-memory-without-noticing
 
 > It is impossible to prevent every memory leak; therefore our technical fixes are primarily focused around detection and mitigation. A high process crash (panic/OOM) rate is clearly abnormal in the system and that information should be displayed to people debugging issues, even if it is one of many potential causes rather than a symptom of user pain. Thus, it should be made a diagnostic message rather than a paging alert. And rather than outright crash and thereby lose internal telemetry, we will consider adding backpressure (returning an unhealthy status code) to incoming requests when we are resource constrained to keep the telemetry with that vital data flowing if we're tight on resources. In this situation, it would have resulted in dropping more incoming traffic, but with the benefit of immediately getting the data we needed to diagnose the issue. Obviously, this is not an easy decision to make, and requires more discussion.
-> 
+>
 > Ultimately, the main changes we need to make are to our incident process rather than technical ones. We should be more willing to believe SLO burn alerts, more willing to declare incidents, and more willing to investigate/question assumptions. We're taking this as a lesson that consistency matters, and we'd rather err on the side of declaring an unnecessary incident than fail to declare an incident and act haphazardly. We're promoting our user-facing SLO alerts to actually page oncall the same way our end-to-end blackbox probers do. If and when we find we're spending too much engineer time responding to non-incidents, we will move the pendulum back a bit, and continue to iterate.
 
 ### Risks
@@ -276,7 +277,7 @@ Describe if there were any issues while running the incident. Was it hard to get
 
 We could not get a hold of the on-call person when trying to page the DevOps team. We manually escalated the issue to the DevOps manager.
 
-_** One thing to note here, we are not trying to blame anyone if they do not answer a page, but to simply understand what happened and to improve on it. In this case it could be that the person never got the page, the person does not have their paging communications setup properly, the person got a new phone, there was no secondary setup for on-call, or whatever other reason. We want to find ways to improve this process as well._
+_\*\* One thing to note here, we are not trying to blame anyone if they do not answer a page, but to simply understand what happened and to improve on it. In this case it could be that the person never got the page, the person does not have their paging communications setup properly, the person got a new phone, there was no secondary setup for on-call, or whatever other reason. We want to find ways to improve this process as well._
 
 ### Follow-up Actions
 
@@ -292,42 +293,42 @@ Detail the timeline of the incident, preferably in UTC.
 
 Include:
 
-- Key lead-up events.
-- Start of activity and first impacts. 
-- Decision points and escalations.
-- Theories on what could be going wrong
-- Initiatives that were tried and failed to mitigate the issues
-- Incident resolution and post-impact notes.
-- The timings of the incident (Detection, Acknowledgment, Direct Cause Found, Mitigation, Resolution)
+-   Key lead-up events.
+-   Start of activity and first impacts.
+-   Decision points and escalations.
+-   Theories on what could be going wrong
+-   Initiatives that were tried and failed to mitigate the issues
+-   Incident resolution and post-impact notes.
+-   The timings of the incident (Detection, Acknowledgment, Direct Cause Found, Mitigation, Resolution)
 
 #### Example
 
 https://www.okta.com/blog/2022/03/oktas-investigation-of-the-january-2022-compromise/
 
-> - January 20, 2022, 23:18 - Okta Security received an alert that a new factor was added to a Sitel employee's Okta account from a new location. The target did not accept an MFA challenge, preventing access to the Okta account.
-> - January 20, 2022, at 23:46 - Okta Security investigated the alert and escalated it to a security incident.
-> - January 21, 2022, at 00:18 - The Okta Service Desk was added to the incident to assist with containing the user's account.
-> - January 21, 2022, at 00:28 - The Okta Service Desk terminated the user's Okta sessions and suspended the account until the root cause of suspicious activity could be identified and remediated.
-> - January 21, 2022, at 18:00 - Okta Security shared indicators of compromise with Sitel. Sitel informed us that they retained outside support from a leading forensic firm.
-> - January 21, 2022, to March 10, 2022 - The forensic firm's investigation and analysis of the incident was conducted until February 28, 2022, with its report to Sitel dated March 10, 2022.
-> - March 17, 2022 - Okta received a summary report about the incident from Sitel
-> - March 22, 2022, at 03:30 - Screenshots shared online by LAPSUS$
-> - March 22, 2022, at 05:00 - Okta Security determined that the screenshots were related to the January incident at Sitel
-> - March 22, 2022, at 12:27 - Okta received the complete investigation report from Sitel
+> -   January 20, 2022, 23:18 - Okta Security received an alert that a new factor was added to a Sitel employee's Okta account from a new location. The target did not accept an MFA challenge, preventing access to the Okta account.
+> -   January 20, 2022, at 23:46 - Okta Security investigated the alert and escalated it to a security incident.
+> -   January 21, 2022, at 00:18 - The Okta Service Desk was added to the incident to assist with containing the user's account.
+> -   January 21, 2022, at 00:28 - The Okta Service Desk terminated the user's Okta sessions and suspended the account until the root cause of suspicious activity could be identified and remediated.
+> -   January 21, 2022, at 18:00 - Okta Security shared indicators of compromise with Sitel. Sitel informed us that they retained outside support from a leading forensic firm.
+> -   January 21, 2022, to March 10, 2022 - The forensic firm's investigation and analysis of the incident was conducted until February 28, 2022, with its report to Sitel dated March 10, 2022.
+> -   March 17, 2022 - Okta received a summary report about the incident from Sitel
+> -   March 22, 2022, at 03:30 - Screenshots shared online by LAPSUS$
+> -   March 22, 2022, at 05:00 - Okta Security determined that the screenshots were related to the January incident at Sitel
+> -   March 22, 2022, at 12:27 - Okta received the complete investigation report from Sitel
 
 ## 4. Interviewing Participants
 
 While the information is being gathered, the incident investigator may need to interview people to get more clarity on the situation. As the pieces start to come together, you may find more people you need to interview about the actual events that occurred. Shoot these people a DM or try to schedule a 1-on-1 with them. Sometimes this could involve a small and quick meeting with more than one person.
 
-- You should determine the SMEs involved that helped mitigate and resolve the issue. This should be the first person you talk to, to get a better understanding as to what actions took place and in what order.
+-   You should determine the SMEs involved that helped mitigate and resolve the issue. This should be the first person you talk to, to get a better understanding as to what actions took place and in what order.
 
-- Talk to the person that made the change that caused the issue. Help them stay at ease by getting their perspective, but also letting them know that this is a learning experience and not a blame game.
+-   Talk to the person that made the change that caused the issue. Help them stay at ease by getting their perspective, but also letting them know that this is a learning experience and not a blame game.
 
-- Talk to people that have a good understanding of the underlying system or service. A developer might make a change where they thought they were fixing something, but because of some underlying tech debt, it broke something else. There may be someone with this sort of knowledge that you can talk to, to understand the tech debt.
+-   Talk to people that have a good understanding of the underlying system or service. A developer might make a change where they thought they were fixing something, but because of some underlying tech debt, it broke something else. There may be someone with this sort of knowledge that you can talk to, to understand the tech debt.
 
-- This is like above in that you can reach out to former team members that owned a particular service. They might have some tribal knowledge that could be helpful during the investigation.
+-   This is like above in that you can reach out to former team members that owned a particular service. They might have some tribal knowledge that could be helpful during the investigation.
 
-- SMEs of a particular subject matter. There have been times where I talk to someone who really knows about a particular area, but they had nothing to do with the incident itself. They can shed some light on some of those technical details and why something might have happened.
+-   SMEs of a particular subject matter. There have been times where I talk to someone who really knows about a particular area, but they had nothing to do with the incident itself. They can shed some light on some of those technical details and why something might have happened.
 
 Try and do things async as much as possible. This will solve time, but also respect the other person's time. If you decide to have a meeting, try to keep it at 25 minutes.
 
@@ -341,21 +342,21 @@ Overall, make the person feel comfortable. This is not supposed to be an interro
 
 There are in no specific order in asking these questions, these are just examples of what can be asked.
 
-- How were you invited to the incident?
-- What did you know about the situation when you were called in?
-- Did anyone address you when you joined the incident and explain the situation?
-- Tell me about the order of events.
-- At what point did you that X change caused this incident?
-- How did you know X change caused this incident?
-- What dashboards or logs did you look at and what query did you run to filter out the logs?
-- Did you run any commands to determine health issues during the incident?
-- Do you frequently get paged for incidents like this? How do you feel how the incident went?
-- Do you have any risks or concerns that were found during the incident?
-- What did you mean by "X statement"?
-- Do you think you have a good understanding of the service/system?
-- Do you have the proper tools needed to help you troubleshoot the issue?
-- Is there enough documentation to help you understand the service?
-- Were there any surprises about the incident?
+-   How were you invited to the incident?
+-   What did you know about the situation when you were called in?
+-   Did anyone address you when you joined the incident and explain the situation?
+-   Tell me about the order of events.
+-   At what point did you that X change caused this incident?
+-   How did you know X change caused this incident?
+-   What dashboards or logs did you look at and what query did you run to filter out the logs?
+-   Did you run any commands to determine health issues during the incident?
+-   Do you frequently get paged for incidents like this? How do you feel how the incident went?
+-   Do you have any risks or concerns that were found during the incident?
+-   What did you mean by "X statement"?
+-   Do you think you have a good understanding of the service/system?
+-   Do you have the proper tools needed to help you troubleshoot the issue?
+-   Is there enough documentation to help you understand the service?
+-   Were there any surprises about the incident?
 
 Continue to get clarification where needed and again, play dumb, and ask stupid questions. You want to get their perspective and not assume anything.
 
@@ -379,13 +380,13 @@ When going over what happened during the incident, this would be a good time to 
 
 ### Example Agenda
 
-- Intro to set the tone of the meeting
-- The expected agenda
-- Summary of what happened to get everyone on the same page
-- Overview of the timeline to ensure accuracy
-- Encourage others to ask questions at this time. Again, ask stupid questions.
-- What action items have been done so far
-- What are next steps
+-   Intro to set the tone of the meeting
+-   The expected agenda
+-   Summary of what happened to get everyone on the same page
+-   Overview of the timeline to ensure accuracy
+-   Encourage others to ask questions at this time. Again, ask stupid questions.
+-   What action items have been done so far
+-   What are next steps
 
 ### Action Items
 
@@ -412,4 +413,3 @@ I know this was long, but it was long on purpose. I wanted to make sure that you
 I also wanted people to think of a different way to do retros. A lot of places will try and do a root cause analysis, but if you are not trained for this, it might be hard to understand. This process should be a lot simpler and more fulfilling as you are just focused on learning and improving. You are no longer worried about how to fill out a document, it should flow naturally with this method.
 
 I hope this helps you in your journey to becoming an effective advocate for retros and building a great company culture.
-
