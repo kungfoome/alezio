@@ -5,8 +5,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import TagCloud from '../../components/TagCloud.astro';
 
-const { tag } = Astro.props;
-
 const articles = await getPublishedArticles();
 
 const title = 'All Articles';

@@ -10,7 +10,6 @@ interface Props {
     blur?: Blur;
     imageSizeMobile?: ImageSize;
     imageSizeDesktop?: ImageSize;
-    ratio?: number;
 }
 
 // We set this statically here so tailwind knows about it
@@ -25,31 +24,30 @@ const blurSizes: Record<Blur, string> = {
 const defaultProps = {
     blur: Blur.SM,
     imageSizeMobile: ImageSize.XS,
-    imageSizeDesktop: ImageSize.MD,
-    ratio: 1 //square. Setting this higher makes it portrait, setting lower makes it landscape
+    imageSizeDesktop: ImageSize.SM,
 };
 
-const { src, alt, blur, imageSizeMobile, imageSizeDesktop, ratio } = {
+const { src, alt, blur, imageSizeMobile, imageSizeDesktop } = {
     ...defaultProps,
     ...Astro.props
 };
 
 const blurCSS = blurSizes[blur];
 
-var size = 100;
+var size = 120;
 
 const mobileImage = await getImage({
     src: src,
     format: 'webp',
     width: size * imageSizeMobile,
-    height: size * imageSizeMobile * ratio
+    height: size * imageSizeMobile
 });
 
 const desktopImage = await getImage({
     src: src,
     format: 'webp',
-    width: size * imageSizeDesktop * 1.6,
-    height: size * imageSizeDesktop * ratio * 1.6
+    width: size * imageSizeDesktop,
+    height: size * imageSizeDesktop
 });
 
 ---
