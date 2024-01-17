@@ -2,11 +2,13 @@
 import { getAllUsedTags } from '../lib/articles';
 import { Tags } from '../schemas/ArticleSchema';
 
-const defaultTagColor = 'bg-blue-500 hover:bg-blue-400 border-blue-700 hover:border-blue-500 dark:bg-blue-500 dark:hover:bg-blue-400 dark:border-blue-700 dark:hover:border-blue-500';
-const activeColor = 'text-black bg-gray-200 hover:bg-gray-300 border-gray-400 hover:border-gray-500 dark:bg-gray-200 dark:hover:bg-gray-300 dark:border-gray-400 dark:hover:border-gray-500';
+const defaultTagColor =
+    'bg-blue-500 hover:bg-blue-400 border-blue-700 hover:border-blue-500 dark:bg-blue-500 dark:hover:bg-blue-400 dark:border-blue-700 dark:hover:border-blue-500';
+const activeColor =
+    'text-black bg-gray-200 hover:bg-gray-300 border-gray-400 hover:border-gray-500 dark:bg-gray-200 dark:hover:bg-gray-300 dark:border-gray-400 dark:hover:border-gray-500';
 
-const tagsWithColors: Record<Tags | "All", string> = {
-    ["All"]:
+const tagsWithColors: Record<Tags | 'All', string> = {
+    ['All']:
         'bg-slate-500 hover:bg-slate-400 border-slate-700 hover:border-slate-500 dark:bg-slate-500 dark:hover:bg-slate-400 dark:border-slate-700 dark:hover:border-slate-500',
     [Tags.PlatformEngineering]:
         'bg-purple-500 hover:bg-purple-400 border-purple-700 hover:border-purple-500 dark:bg-purple-500 dark:hover:bg-purple-400 dark:border-purple-700 dark:hover:border-purple-500',
@@ -22,44 +24,40 @@ const usedTags = await getAllUsedTags();
 const { currentTag } = Astro.props;
 
 const tags = usedTags.map((tagInfo) => {
-    const color = tagInfo.tag === currentTag ? activeColor : tagsWithColors[tagInfo.tag] || defaultTagColor;
+    const color =
+        tagInfo.tag === currentTag
+            ? activeColor
+            : tagsWithColors[tagInfo.tag] || defaultTagColor;
 
     return {
         ...tagInfo,
         tagTitle: `View articles with the tag: ${tagInfo.tag}`,
-        color: color,
-    }
+        color: color
+    };
 });
 
 const allTags = {
-    tag: "All" as Tags,
-    tagLink: "/articles",
-    tagTitle: "View all articles",
-    color: currentTag === "all" ? activeColor : tagsWithColors["All"]
+    tag: 'All' as Tags,
+    tagLink: '/articles',
+    tagTitle: 'View all articles',
+    color: currentTag === 'all' ? activeColor : tagsWithColors['All']
 };
 
 tags.unshift(allTags);
-
 ---
 
-<div class="flex flex-wrap -ml-2">
+<div class="-ml-2 flex flex-wrap">
     {
-        tags.map(
-            ({ tag, tagLink, tagTitle, color }) => (
-                <div class="px-2 py-2">
-                    <a
-                        href={tagLink}
-                        title={tagTitle}
-                        data-astro-prefetch
+        tags.map(({ tag, tagLink, tagTitle, color }) => (
+            <div class="px-2 py-2">
+                <a href={tagLink} title={tagTitle} data-astro-prefetch>
+                    <button
+                        class={`${color} rounded border-b-4 px-4 py-2 font-bold text-white`}
                     >
-                        <button
-                            class={`${color} rounded border-b-4 px-4 py-2 font-bold text-white`}
-                        >
-                            {tag}
-                        </button>
-                    </a>
-                </div>
-            )
-        )
+                        {tag}
+                    </button>
+                </a>
+            </div>
+        ))
     }
 </div>

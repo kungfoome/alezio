@@ -17,7 +17,8 @@ This is my code for https://alez.io. I have created a blog post series that goes
 -   [x] CTA block for articles
 -   [x] Sitemap
 -   [x] Generate static tag pages that shows tag specific blogs
--   [ ] Add Tag page that shows all tags
+-   [x] Tag page that shows all tags
+-   [x] Custom 404 page with tailwind
 -   [ ] Article search to search in article title, description, or content
 -   [ ] Related Articles by tag?
 -   [ ] Table of Contents in Articles

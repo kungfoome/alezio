@@ -127,7 +127,7 @@ export async function getAllUsedTags(): Promise<TagInfo[]> {
             (acc, tag) => {
                 acc[tag] = acc[tag] || {
                     tag,
-                    tagLink: `/articles/${getFormattedTag(tag)}`,
+                    tagLink: `/articles/${getFormattedTag(tag)}`
                 };
                 return acc;
             },
