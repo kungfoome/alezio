@@ -1,0 +1,32 @@
+---
+import { getPublishedArticles } from '../../lib/articles';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import TagCloud from '../../components/TagCloud.astro';
+
+const { tag } = Astro.props;
+
+const articles = await getPublishedArticles();
+
+const title = 'All Articles';
+---
+
+<BaseLayout pageTitle={title}>
+    <div class="py-8 sm:py-16">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="mx-auto">
+                <div class="pt-5">
+                    <TagCloud currentTag="all" />
+                </div>
+                <div class="pt-10 space-y-16">
+                    {
+                        articles.map((article) => (
+                            <ArticleCard article={article} />
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</BaseLayout>

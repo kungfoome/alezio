@@ -1,4 +1,6 @@
 import { getCollection } from 'astro:content';
+import { Tags } from '../schemas/ArticleSchema';
+
 import type { CollectionEntry } from 'astro:content';
 
 type Article = CollectionEntry<'articles'>;
@@ -6,6 +8,11 @@ type Article = CollectionEntry<'articles'>;
 type FilterFunction = (article: Article) => boolean;
 type SortOrder = 'ascend' | 'descend' | 'none';
 type SortField = keyof Article['data'] | keyof Article;
+
+type TagInfo = {
+    tag: Tags;
+    tagLink: string;
+};
 
 export async function getPublishedArticles({
     customFilter = null,
@@ -103,5 +110,32 @@ function sortArticles(
             // sortOrder is 'descend'
             return (fieldA ?? '') > (fieldB ?? '') ? -1 : 1;
         }
+    });
+}
+
+export function getFormattedTag(tag: string): string {
+    return tag.replace(/\s+/g, '_').toLowerCase();
+}
+
+export async function getAllUsedTags(): Promise<TagInfo[]> {
+    const articles = await getPublishedArticles();
+
+    const tagCounts = articles
+        .map((article) => article.data.tags || [])
+        .flatMap((tags) => tags)
+        .reduce(
+            (acc, tag) => {
+                acc[tag] = acc[tag] || {
+                    tag,
+                    tagLink: `/articles/${getFormattedTag(tag)}`,
+                };
+                return acc;
+            },
+            {} as Record<string, TagInfo>
+        );
+
+    // Sort by count
+    return Object.values(tagCounts).sort((a, b) => {
+        return a.tag.localeCompare(b.tag);
     });
 }
