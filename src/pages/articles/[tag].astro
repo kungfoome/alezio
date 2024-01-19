@@ -2,7 +2,6 @@
 import { getPublishedArticles } from '../../lib/articles';
 import { getFormattedTag } from '../../lib/articles';
 import { Tags } from '../../schemas/ArticleSchema';
-import siteConfig from '../../config/siteconfig.ts';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
@@ -35,7 +34,6 @@ const { tag } = Astro.params;
 <BaseLayout
     pageTitle={`Tag: ${prettyTag}`}
     pageDescription={`All the articles tagged with: ${prettyTag}`}
-    pageImage={siteConfig.siteIcon}
     pageUrl={`articles/${tag}`}
 >
     <div class="py-8 sm:py-16">

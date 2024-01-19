@@ -1,6 +1,5 @@
 ---
 import { getPublishedArticles } from '../../lib/articles';
-import siteConfig from '../../config/siteconfig.ts';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
@@ -13,7 +12,6 @@ const title = 'All Articles';
 <BaseLayout
     pageTitle={title}
     pageDescription="All the articles"
-    pageImage={siteConfig.siteIcon}
     pageUrl={`articles/`}
 >
     <div class="py-8 sm:py-16">
