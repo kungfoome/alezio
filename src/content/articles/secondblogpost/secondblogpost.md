@@ -6,7 +6,7 @@ featuredimage:
     src: './featureimage.png'
     alt: 'Digital world'
 publishedDate: 2022-07-08
-tags: ['Platform Engineering']
+tags: ['Platform Engineering', 'SRE']
 featured: true
 draft: true
 ---

@@ -2,6 +2,7 @@
 import { getPublishedArticles } from '../../lib/articles';
 import { getFormattedTag } from '../../lib/articles';
 import { Tags } from '../../schemas/ArticleSchema';
+import siteConfig from '../../config/siteconfig.ts';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
@@ -21,22 +22,27 @@ export async function getStaticPaths() {
             params: { tag: getFormattedTag(tag) },
             props: {
                 articles: filteredPosts,
-                prettyTag: tag,
-                tag: tag
+                prettyTag: tag
             }
         };
     });
 }
 
-const { articles, prettyTag, tag } = Astro.props;
+const { articles, prettyTag } = Astro.props;
+const { tag } = Astro.params;
 ---
 
-<BaseLayout pageTitle={prettyTag}>
+<BaseLayout
+    pageTitle={`Tag: ${prettyTag}`}
+    pageDescription={`All the articles tagged with: ${prettyTag}`}
+    pageImage={siteConfig.siteIcon}
+    pageUrl={`articles/${tag}`}
+>
     <div class="py-8 sm:py-16">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div class="mx-auto">
                 <div class="pt-5">
-                    <TagCloud currentTag={tag} />
+                    <TagCloud currentTag={prettyTag} />
                 </div>
                 <div class="pt-10">
                     {

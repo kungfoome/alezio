@@ -4,6 +4,8 @@ import type { CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
 import ArticleHeader from '../components/ArticleHeader.astro';
 
+import siteConfig from '../config/siteconfig.ts';
+
 interface Props {
     article: CollectionEntry<'articles'>;
 }
@@ -15,7 +17,14 @@ const branch = article.data.git?.branch
     : '';
 ---
 
-<BaseLayout pageTitle={article.data.title}>
+<BaseLayout
+    pageTitle={article.data.title}
+    pageDescription={article.data.description}
+    pageImage={article.data.featuredimage?.src.src}
+    pageUrl={`${siteConfig.blogPostPath}/${article.slug}`}
+    publishedDate={article.data.publishedDate}
+    articleTags={article.data.tags}
+>
     <ArticleHeader article={article} />
     <div class="py-8 sm:py-16">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
