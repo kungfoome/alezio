@@ -14,17 +14,17 @@ interface Props {
 
 // We set this statically here so tailwind knows about it
 const blurSizes: Record<Blur, string> = {
-    [Blur.None]: "",
-    [Blur.SM]: "blur-sm",
-    [Blur.MD]: "blur-md",
-    [Blur.LG]: "blur-lg",
-    [Blur.XL]: "blur-xl",
-}
+    [Blur.None]: '',
+    [Blur.SM]: 'blur-sm',
+    [Blur.MD]: 'blur-md',
+    [Blur.LG]: 'blur-lg',
+    [Blur.XL]: 'blur-xl'
+};
 
 const defaultProps = {
     blur: Blur.SM,
     imageSizeMobile: ImageSize.XS,
-    imageSizeDesktop: ImageSize.SM,
+    imageSizeDesktop: ImageSize.SM
 };
 
 const { src, alt, blur, imageSizeMobile, imageSizeDesktop } = {
@@ -49,7 +49,6 @@ const desktopImage = await getImage({
     width: size * imageSizeDesktop,
     height: size * imageSizeDesktop
 });
-
 ---
 
 <picture>
