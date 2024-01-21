@@ -8,9 +8,10 @@ import siteConfig from '../config/siteconfig.ts';
 
 interface Props {
     article: CollectionEntry<'articles'>;
+    minutesRead: string;
 }
 
-const { article } = Astro.props;
+const { article, minutesRead } = Astro.props;
 
 const branch = article.data.git?.branch
     ? `tree/${article.data.git?.branch}`
@@ -28,13 +29,18 @@ const branch = article.data.git?.branch
     <ArticleHeader article={article} />
     <div class="py-8 sm:py-16">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
-            <span
-                >Published: {
+            <span>
+                 {
                     new Date(article.data.publishedDate).toLocaleDateString(
-                        'en-US'
+                        'en-US',{
+                            day: "numeric",
+                            month: "short",
+                            year: "numeric",
+                        }
                     )
-                }</span
-            >
+                }
+                | {minutesRead}
+            </span>
             <p class="my-6 text-lg leading-8">
                 {article.data.description}
             </p>

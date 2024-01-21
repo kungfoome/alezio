@@ -6,16 +6,20 @@ import Prose from '../../components/Prose.astro';
 
 export async function getStaticPaths() {
     return (await getPublishedArticles()).map((article) => ({
-        params: { slug: article.slug },
+        params: { slug: article.slug, minutesRead: "" },
         props: { article }
     }));
 }
 
 const { article } = Astro.props;
-const { Content } = await article.render();
+const { Content, remarkPluginFrontmatter } = await article.render();
+
 ---
 
-<MarkdownPostLayout article={article}>
+<MarkdownPostLayout
+    article={article}
+    minutesRead={remarkPluginFrontmatter.minutesRead}
+>
     <Prose>
         <Content />
     </Prose>

@@ -21,6 +21,7 @@ This is my code for https://alez.io. I have created a blog post series that goes
 -   [x] Custom 404 page with tailwind
 -   [x] RSS Feed
 -   [x] SEO metadata
+-   [X] Add total read time for each blog
 -   [ ] Article search to search in article title, description, or content
 -   [ ] Related Articles by tag?
 -   [ ] Table of Contents in Articles

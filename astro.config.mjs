@@ -4,6 +4,8 @@ import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 
+import { remarkReadingTime } from './src/lib/remark/remark-reading-time.mjs';
+
 // https://astro.build/config
 export default defineConfig({
     site: 'https://alez.io',
@@ -15,5 +17,8 @@ export default defineConfig({
             priority: 0.7,
             lastmod: new Date()
         })
-    ]
+    ],
+    markdown: {
+        remarkPlugins: [remarkReadingTime],
+    },
 });
